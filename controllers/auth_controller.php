@@ -1,6 +1,6 @@
 <?php
   class AuthController {
-    public function home() {
+    public function index() {
       require_once('views/auth/index.php');
     }
 
