@@ -5,8 +5,9 @@
     $controller = $_GET['controller'];
     $action     = $_GET['action'];
   } else {
-    $controller = 'pages';
-    $action     = 'home';
+    //page par defaut, apres faut verifie avec session_start etc si l'utilisateur si auth...
+    $controller = 'auth';
+    $action     = 'index';
   }
 
   require_once('views/layout.php');

@@ -4,8 +4,9 @@
   </head>
   <body>
     <header>
-      <a href='/projet_LW'>Home</a>
+      <a href='/project_LW'>Home</a>
       <a href='?controller=posts&action=index'>Posts</a>
+      <a href='?controller=auth&action=index'>Se deconnecter</a>
     </header>
 
     <?php require_once('routes.php'); ?>

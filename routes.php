@@ -11,15 +11,22 @@
         require_once('models/post.php');
         $controller = new PostsController();
       break;
+      case 'auth':
+        $controller = new AuthController();
+      break;
+      case 'admin':
+        $controller = new AdminController();
+      break;
       default:
-        $controller = new PagesController();
+        $controller = new AuthCOntroller();
     }
 
     $controller->{ $action }();
   }
 
   // we're adding an entry for the new controller and its actions
-  $controllers = array('pages' => ['home', 'error'],
+  $controllers = array('auth' => ['index', 'error'],
+                       'pages' => ['home', 'error'],
                        'posts' => ['index', 'show']);
 /**
  * http://192.168.76.76/?controller=posts&action=index
@@ -28,16 +35,16 @@
  */
 
   if (array_key_exists($controller, $controllers)) {
-    echo "array exists";
+ //   echo "array exists";
     if (in_array($action, $controllers[$controller])) {
-      echo "actions exists";
+ //     echo "actions exists";
       call($controller, $action);
     } else {
-      echo "don't exists";
-      call('pages', 'error');
+   //   echo "don't exists";
+      call('auth', 'error');
     }
   } else {
-    echo "nothing exists";
-    call('pages', 'error');
+  //  echo "nothing exists";
+    call('auth', 'error');
   }
 ?>
