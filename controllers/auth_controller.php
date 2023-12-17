@@ -1,5 +1,7 @@
 <?php
   class AuthController {
+
+
     public function index() {
       require_once('views/auth/index.php');
     }
@@ -22,27 +24,22 @@
   }
 
   public function login() {
+    $this->utilisateurs = new Utilisateurs();
     // Handle login form submission
-    echo "login function ";
-    if (isset($_POST['username']) && isset($_POST['password'])) {
+    if (isset($_POST['email']) && isset($_POST['mot_de_passe'])) {
         $email = $_POST['email'];
         $password = $_POST['mot_de_passe'];
-
-        // Validate input data (you might want to use a validation library)
-        // ...
-
-        // Attempt to log in
-        $user = $this->utilisateursModel->loginUser($email, $password);
+        $user = $this->utilisateurs->loginUser($email, $password);
 
         if ($user) {
-          require_once('views/admin/index.php');
+            require_once('views/admin/index.php');
         } else {
-          echo "error authentification";
+            echo "error authentication";
         }
     } else {
-        // Display login form
-        // ...
+        // Display login form or handle invalid request
     }
-  }
+}
+
   }
 ?>
