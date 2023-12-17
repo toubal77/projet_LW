@@ -26,7 +26,7 @@
 
 // we're adding an entry for the new controller and its actions
 $controllers = array(
-  'auth' => ['index', 'error'],
+  'auth' => ['index', 'signUp'],
   'pages' => ['index', 'error'],
   'posts' => ['index', 'show'],
   'admin' => ['index', 'show']

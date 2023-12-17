@@ -64,9 +64,13 @@
     
     
     
-    <footer>
-      Copyright
-    </footer>
+<!-- HTML for the footer -->
+<footer>
+    <div>
+        <p>&copy; 2023 Université de Rouen Normandie. All rights reserved. | Website by TOUBAL Zine-Eddine  SOUALMI Majda</p>
+    </div>
+</footer>
+
 
     <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

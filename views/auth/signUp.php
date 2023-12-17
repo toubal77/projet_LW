@@ -2,7 +2,7 @@
             <div class="d-flex justify-content-center h-100">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Log In</h3>
+                        <h3>Create Account</h3>
                     </div>
                     <div class="card-body">
                     <form action="index.php" method="post">
@@ -11,6 +11,13 @@
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="username">
+
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="e-mail">
 
                             </div>
                             <div class="input-group form-group">
@@ -26,7 +33,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
-                            Don't have an account?<a href="/project_LW/auth/signUp">Sign Up</a>
+                            You have an account?<a href="/project_LW/auth/index">Sign In</a>
                         </div>
                     </div>
                 </div>

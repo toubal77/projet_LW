@@ -4,6 +4,10 @@
       require_once('views/auth/index.php');
     }
 
+    public function signUp() {
+      require_once('views/auth/signUp.php');
+    }
+
     public function error() {
       require_once('views/auth/error.php');
     }
