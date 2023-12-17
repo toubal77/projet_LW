@@ -1,34 +1,37 @@
+<div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Log In</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="username">
 
-        <form class="form-signin" method="POST" action="back/authentification.php">       
-          <h2 class="form-signin-heading">Authentification</h2>
-          <div class="input-container">
-            <span class="glyphicon glyphicon-user"></span>
-          <input id="username" type="text" class="form-control" name="username" placeholder="Nom d'utilisateur" required= autofocus="" />
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="password">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn float-right login_btn">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account?<a href="#">Sign Up</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="input-container">
-            <span class="glyphicon glyphicon-lock"></span>
-          <input id="passwd" type="password" class="form-control" name="password" placeholder="Mot de passe" required/>  
-        </div> 
-    
-          <button class="btn btn-lg btn-primary btn-block" id="connexion" onclick="authentifier()" type="submit">Se connecter</button>
-          <a href="Inscription.html"> Cliquer Ici pour Creer un compte </a>
-        </form>
-    
-      <script type="text/javascript">
-      
-         function authentifier() {      
-        
-       var username = document.getElementById("username").value;
-       var password = document.getElementById("passwd").value;
-       var valide=!(username.length==0);
-       var valide2=!(password.length==0);
-       if(valide){
-         
-        location.href="index2.html";
-         
-       }else{
-        alert('les champs sont obligatoires ');
-       }
-     
-        };
-        </script>

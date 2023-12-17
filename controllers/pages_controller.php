@@ -1,9 +1,9 @@
 <?php
   class PagesController {
-    public function home() {
+    public function index() {
       $first_name = 'Jon';
       $last_name  = 'Snow';
-      require_once('views/pages/home.php');
+      require_once('views/pages/index.php');
     }
 
     public function error() {
