@@ -3,13 +3,15 @@ class Illustration {
     public $idIllustration;
     public $titre;
     public $format;
+    public $image;
     public $langueParDefaut;
     public $idUtilisateurs;
 
-    public function __construct($idIllustration, $titre, $format, $langueParDefaut, $idUtilisateurs) {
+    public function __construct($idIllustration, $titre, $format,$image, $langueParDefaut, $idUtilisateurs) {
         $this->idIllustration = $idIllustration;
         $this->titre = $titre;
         $this->format = $format;
+        $this->image = $image;
         $this->langueParDefaut = $langueParDefaut;
         $this->idUtilisateurs = $idUtilisateurs;
     }
@@ -24,6 +26,7 @@ class Illustration {
                 $illustration['idIllustration'],
                 $illustration['titre'],
                 $illustration['format'],
+                $illustration['image'],
                 $illustration['langue_par_defaut'],
                 $illustration['idUtilisateurs']
             );
@@ -36,17 +39,23 @@ class Illustration {
         $db = Db::getInstance();
         $id = intval($id);
         $req = $db->prepare('SELECT * FROM illustration WHERE idIllustration = :id');
-        $req->execute(array('id' => $id));
+        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+
         $illustration = $req->fetch();
 
-        return new Illustration(
-            $illustration['idIllustration'],
-            $illustration['titre'],
-            $illustration['format'],
-            $illustration['langue_par_defaut'],
-            $illustration['idUtilisateurs']
-        );
+        if ($illustration) {
+            return new Illustration(
+                $illustration['idIllustration'],
+                $illustration['titre'],
+                $illustration['format'],
+                $illustration['image'],
+                $illustration['langue_par_defaut'],
+                $illustration['idUtilisateurs']
+            );
+        } else {
+            return null;
+        }
     }
-
 }
 ?>

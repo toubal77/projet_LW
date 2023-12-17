@@ -28,7 +28,7 @@
 $controllers = array(
   'auth' => ['index', 'signUp'],
   'pages' => ['index', 'error'],
-  'posts' => ['index', 'show'],
+  'posts' => ['index', 'create','show'],
   'admin' => ['index', 'show']
 );
 
