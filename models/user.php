@@ -23,6 +23,22 @@ class Utilisateurs {
     }
     
 
+    public function registerUser($email, $username, $password) {
+        $db = Db::getInstance();
+
+        // Replace 'users' with your actual table name and adjust column names accordingly
+        $req = $db->prepare('INSERT INTO users (nom, email, mot_de_passe) VALUES (:username, :email, :password)');
+        $req->execute(array('username' => $username, 'role' => 'user' ,'email' => $email, 'password' => $password));
+
+        // Check if the insertion was successful
+        if ($req->rowCount() > 0) {
+            return true; // User inserted successfully
+        } else {
+            return false; // Failed to insert user
+        }
+    }
+    
+
     // Lors de la création d'un compte
     public static function emailExists($email, $ignore_id = null) {
         $user = static::findByEmail($email);

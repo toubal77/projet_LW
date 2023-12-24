@@ -41,5 +41,24 @@
     }
 }
 
+public function signUpUser() {
+  $this->utilisateurs = new Utilisateurs();
+  // Handle login form submission
+  if(isset($_POST['submit'])){
+  if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['mot_de_passe'])) {
+      $email = $_POST['email'];
+      $password = $_POST['mot_de_passe'];
+      $user = $this->utilisateurs->registerUser($email, $password);
+      if ($user) {
+          require_once('views/admin/index.php');
+      } else {
+          echo "error authentication";
+      }
+  } else {
+      // Display login form or handle invalid request
+  }
+}
+}
+
   }
 ?>
