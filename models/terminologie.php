@@ -5,12 +5,12 @@ class Terminologie {
     public $langueParDefaut;
     public $traduction;
 
-    public function __construct($idTerminologies, $idComposant, $langueParDefaut, $traduction) {
-        $this->idTerminologies = $idTerminologies;
-        $this->idComposant = $idComposant;
-        $this->langueParDefaut = $langueParDefaut;
-        $this->traduction = $traduction;
-    }
+  //  public function __construct($idTerminologies, $idComposant, $langueParDefaut, $traduction) {
+  //      $this->idTerminologies = $idTerminologies;
+  //      $this->idComposant = $idComposant;
+  //      $this->langueParDefaut = $langueParDefaut;
+  //      $this->traduction = $traduction;
+  //  }
 
     public static function all() {
         $list = [];
@@ -44,5 +44,40 @@ class Terminologie {
         );
     }
 
+     
+       public function getIdTerminologies() {
+        return $this->idTerminologies;
+    }
+
+    public function setIdTerminologies($idTerminologies) {
+        $this->idTerminologies = $idTerminologies;
+    }
+
+
+    public function getIdComposant() {
+        return $this->idComposant;
+    }
+
+    public function setIdComposant($idComposant) {
+        $this->idComposant = $idComposant;
+    }
+
+
+    public function getLangueParDefaut() {
+        return $this->langueParDefaut;
+    }
+
+    public function setLangueParDefaut($langueParDefaut) {
+        $this->langueParDefaut = $langueParDefaut;
+    }
+
+
+    public function getTraduction() {
+        return $this->traduction;
+    }
+
+    public function setTraduction($traduction) {
+        $this->traduction = $traduction;
+    }
 }
 ?>

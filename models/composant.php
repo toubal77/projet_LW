@@ -44,5 +44,37 @@ class Composant {
         );
     }
 
+    public function getIdComposant() {
+        return $this->idComposant;
+    }
+
+    public function setIdComposant($idComposant) {
+        $this->idComposant = $idComposant;
+    }
+
+    public function getIdIllustration() {
+        return $this->idIllustration;
+    }
+
+    public function setIdIllustration($idIllustration) {
+        $this->idIllustration = $idIllustration;
+    }
+
+    public function getCoordonnees() {
+        return $this->coordonnees;
+    }
+
+    public function setCoordonnees($coordonnees) {
+        $this->coordonnees = $coordonnees;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
 }
 ?>
