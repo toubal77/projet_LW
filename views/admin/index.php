@@ -16,7 +16,7 @@
                 <td style="border: 1px solid #ddd; padding: 8px;">post <?php //echo $post->title; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;">post<?php //echo $post->image; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;">post <?php //echo $post->content; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;"><button style="padding: 5px 10px; cursor: pointer;">Show</button></td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><a href="/project_LW/posts/show" style="padding: 5px 10px; cursor: pointer;">Show</a></td>
             </tr>
         <?php //endforeach; ?>
     </tbody>
@@ -39,7 +39,7 @@
                 <td style="border: 1px solid #ddd; padding: 8px;">user@gmail.com<?php //echo $user->email; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;">role<?php //echo $user->role; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;">
-                    <button style="padding: 5px 10px; cursor: pointer;">Change Role</button>
+                    <button style="padding: 5px 10px; cursor: pointer;">Change Role to admin</button>
                     <button style="padding: 5px 10px; cursor: pointer;">Delete</button>
                 </td>
             </tr>
