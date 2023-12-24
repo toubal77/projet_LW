@@ -1,41 +1,13 @@
-<div class="container">
-            <div class="d-flex justify-content-center h-100">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Create Account</h3>
-                    </div>
-                    <div class="card-body">
-                    <form action="index.php" method="post">
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="username">
+<div style="margin-left: auto; margin-right: auto;margin-top: 50px;background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 300px; text-align: center;">
 
-                            </div>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input type="email" class="form-control" placeholder="e-mail">
+<h2 style="margin-bottom: 20px; color: #333; font-size: 24px;">Connexion</h2>
 
-                            </div>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                <input type="password" class="form-control" placeholder="password">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submitForm" value="Login" class="btn float-right login_btn">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center links">
-                            You have an account?<a href="/project_LW/auth/index">Sign In</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<form action="#" method="post">
+    <input type="text" name="username" placeholder="Nom d'utilisateur" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
+    <input type="email" name="email" placeholder="toubal@gmail.com" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
+    <input type="password" name="password" placeholder="Mot de passe" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
+    <button type="submit" style="background-color: #007BFF; color: #fff; padding: 10px; border: none; width: 100%; cursor: pointer; border-radius: 4px; font-size: 16px;">Se Connecter</button>
+    <p style="margin-top: 10px;">Vous avez un compte? <a href="index">Connecter vous</a></p>
+</form>
+
+</div>
