@@ -22,12 +22,12 @@
         <a style='text-decoration: none; color: #007bff;' href='/project_LW/posts/index'>Post</a>
     </li>
 <?php endif; ?>
-
 <?php if (isset($_SESSION['user'])) : ?>
-             
+    <?php if ($_SESSION['role']!='admin') : ?>
 <li style="margin-right: 20px;">
                     <a style="text-decoration: none; color: #007bff;" href="/project_LW/posts/create">Create Post</a>
                 </li>
+<?php endif; ?>
 <?php endif; ?>
 
 <?php if (!isset($_SESSION['user'])) : ?>
