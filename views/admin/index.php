@@ -61,7 +61,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php //foreach ($posts as $post) : ?>
+        <?php //foreach ($illustrations as $illustrations) : ?>
             <tr>
                 <td style="border: 1px solid #ddd; padding: 8px;">post <?php //echo $post->title; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;">post<?php //echo $post->image; ?></td>

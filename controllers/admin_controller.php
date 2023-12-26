@@ -1,11 +1,13 @@
 <?php
 session_start();
 require_once('models/user.php');
+require_once('models/illustration.php');
   class AdminController {
     public function index() {
 
         try {
           $this->utilisateurs = new Utilisateurs();
+          $this->illustration = new Illustration();
           if(isset($_POST["submitForm"])){
             if (isset($_POST['userId'])) {
               $userId = $_POST['userId'];
@@ -25,14 +27,13 @@ require_once('models/user.php');
             }
           }
           $users = $this->utilisateurs->getAllUsers();
+    //      $illustrations = $this->illustration->getAllIllustrations();
+      //    echo "----ici" . print_r($illustrations, true);
           require_once('views/admin/index.php');
       } catch (Exception $e) {
         echo "Une erreur s'est produite : " . $e->getMessage();
     }
-    
-
-
-
+  
  
     }
 

@@ -43,23 +43,19 @@ class Illustration {
         }
     }
 
-    public static function all() {
-        $list = [];
-        $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM illustration');
-
-        foreach ($req->fetchAll() as $illustration) {
-            $list[] = new Illustration(
-                $illustration['idIllustration'],
-                $illustration['titre'],
-                $illustration['format'],
-                $illustration['image'],
-                $illustration['langue_par_defaut'],
-                $illustration['idUtilisateurs']
-            );
+    public static function getAllIllustrations() {
+        try {
+            $db = Db::getInstance();
+            echo "hey ";
+            $req = $db->prepare('SELECT * FROM illustrations');
+            $req->execute();
+            $illustrations = $req->fetchAll(PDO::FETCH_ASSOC);
+            echo "-----" . print_r($illustrations, true);
+            return $illustrations;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return null;
         }
-
-        return $list;
     }
 
     public static function find($id) {
