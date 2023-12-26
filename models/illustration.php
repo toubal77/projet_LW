@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once('connection.php');
 class Illustration {
     public $idIllustration;
     public $titre;
@@ -20,6 +22,26 @@ class Illustration {
 
     }
 
+
+    public function addIllus($titre, $format, $langueParDefaut, $image) {
+        try {
+            $db = Db::getInstance();
+            
+            $req = $db->prepare('INSERT INTO illustrations (titre, format, langueParDefaut, idUtilisateur, image) VALUES (:titre, :format, :langueParDefaut, :idUtilisateur, :image)');
+            
+            $req->bindValue(':titre', $titre);
+            $req->bindValue(':format', $format);
+            $req->bindValue(':langueParDefaut', $langueParDefaut);
+            $req->bindValue(':idUtilisateur', $_SESSION['id']);
+            $req->bindValue(':image', $image);
+            $req->execute();
+            
+            return $req->rowCount() > 0;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
+        }
+    }
 
     public static function all() {
         $list = [];
