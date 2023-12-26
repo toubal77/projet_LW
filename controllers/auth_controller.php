@@ -23,11 +23,16 @@ require_once('models/user.php');
                 require_once('views/posts/index.php');
               }
             } else {
-           //   require_once('views/posts/index.php');
-           echo "Votre identifiant semble incorrect <a href='/project_LW/auth/index'>réessayer</a>";
+           echo '<script>';
+           echo 'alert("Votre identifiant semble incorrect. Réessayer");';
+           echo 'window.location.href = "/project_LW/auth/index";'; 
+           echo '</script>';
             }
         } else {
-          echo "Veuillez remplir tous les champs du formulaire";
+          echo '<script>';
+          echo 'alert("Veuillez remplir tous les champs du formulaire");';
+          echo 'window.location.href = "/project_LW/auth/index";'; 
+          echo '</script>';
         }
       }else{
       require_once('views/auth/index.php');
@@ -50,12 +55,22 @@ require_once('models/user.php');
                   $user = $this->utilisateurs->registerUser($email, $username, $password);
         
                   if ($user) {
-                      echo "Votre compte a été créé avec succès. Connectez-vous <a href='/project_LW/auth/index'>ICI</a>";
+                    echo '<script>';
+                    echo 'alert("Votre compte a été créé avec succès. Connectez-vous");';
+                    echo 'window.location.href = "/project_LW/auth/index";'; 
+                    echo '</script>';
+                    
                   } else {
-                      echo "Erreur de création de compte ou email existe deja. Veuillez <a href='/project_LW/auth/signUp'>réessayer</a>";
+                    echo '<script>';
+                    echo 'alert("Erreur de création de compte ou email existe deja. Veuillez réessayer");';
+                    echo 'window.location.href = "/project_LW/auth/signUp";'; 
+                    echo '</script>';
                   }
               } else {
-                  echo "Veuillez remplir tous les champs du formulaire";
+                echo '<script>';
+                echo 'alert("Veuillez remplir tous les champs du formulaire");';
+                echo 'window.location.href = "/project_LW/auth/signUp";'; 
+                echo '</script>';
               }
           }else{
             require_once('views/auth/signUp.php');
