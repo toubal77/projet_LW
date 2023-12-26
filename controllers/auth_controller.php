@@ -18,9 +18,9 @@ require_once('models/user.php');
               $_SESSION['email']= $user['email'];
               $_SESSION['role']= $user['role'];
               if($user['role']=='admin'){
-               require_once('views/admin/index.php');
+                header("Location: /project_LW/admin/index");
               }else if($user['role']=='user'){
-                require_once('views/posts/index.php');
+                header("Location: /project_LW/posts/index");
               }
             } else {
            echo '<script>';

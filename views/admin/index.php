@@ -81,19 +81,22 @@
             <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Action</th>
         </tr>
     </thead>
-    <tbody>
-        <?php// foreach ($users as $user) : ?>
-            <tr>
-                <td style="border: 1px solid #ddd; padding: 8px;">user<?php //echo $user->name; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;">user@gmail.com<?php //echo $user->email; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;">role<?php //echo $user->role; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;">
-                    <button style="padding: 5px 10px; cursor: pointer;">Change Role to admin</button>
-                    <button style="padding: 5px 10px; cursor: pointer;">Delete</button>
-                </td>
-            </tr>
-        <?php //endforeach; ?>
-    </tbody>
+  <tbody>
+    <?php foreach ($users as $user) : ?>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $user['nom']; ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $user['email']; ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $user['role']; ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;">
+                <form method="post" action="">
+                    <input type="hidden" name="userId" value="<?php echo $user['idUtilisateurs']; ?>">
+                    <button type="submit" name="submitForm" style="padding: 5px 10px; cursor: pointer;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</tbody>
+
 </table>
 
 <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; margin-top: 20px;">

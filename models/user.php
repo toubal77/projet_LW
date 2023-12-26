@@ -74,7 +74,39 @@ class Utilisateurs {
     }
     
     
+    public static function getAllUsers() {
+        try {
+            $db = Db::getInstance();
+            $req = $db->prepare('SELECT * FROM users');
+            $req->execute();
 
+            $users = $req->fetchAll(PDO::FETCH_ASSOC);    
+    
+            return $users;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return null;
+        }
+    }
+    
+    public static function deleteUser($userId) {
+        try {
+            $db = Db::getInstance();
+
+            $req = $db->prepare('DELETE FROM users WHERE idUtilisateurs = :userId');
+            $req->bindValue(':userId', $userId);
+            $req->execute();
+
+           if($req){
+            return true;
+           }else{
+            return false;
+           }
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
+        }
+    }
  
     public function setIdUtilisateurs($idUtilisateurs) {
         $this->idUtilisateurs = $idUtilisateurs;
