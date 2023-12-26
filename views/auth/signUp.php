@@ -2,7 +2,7 @@
 
 <h2 style="margin-bottom: 20px; color: #333; font-size: 24px;">Connexion</h2>
 
-<form action="/project_LW/posts/index" method="post">
+<form action="" method="post">
     <input type="text" name="username" placeholder="Nom d'utilisateur" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
     <input type="email" name="email" placeholder="toubal@gmail.com" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
     <input type="password" name="password" placeholder="Mot de passe" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>

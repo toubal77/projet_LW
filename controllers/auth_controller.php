@@ -4,6 +4,7 @@ require_once('models/user.php');
   class AuthController {
 
     public function index() {
+      try {
       if(isset($_POST["submitForm"])){
         $this->utilisateurs = new Utilisateurs();
         if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -23,44 +24,48 @@ require_once('models/user.php');
               }
             } else {
            //   require_once('views/posts/index.php');
-           echo "Votre identifiant semble incorrect. <a href='/project_LW/auth/index'>Réessayer</a>";
+           echo "Votre identifiant semble incorrect <a href='/project_LW/auth/index'>réessayer</a>";
             }
         } else {
-          echo " je suis pas rentre dans la confition email mdps";
+          echo "Veuillez remplir tous les champs du formulaire";
         }
       }else{
       require_once('views/auth/index.php');
       }
+    } catch (Exception $e) {
+      echo "Une erreur s'est produite : " . $e->getMessage();
+  }
     }
 
     public function signUp() {
-      if(isset($_POST["submitForm"])){
-        $this->utilisateurs = new Utilisateurs();
-        // Handle login form submission
-        if (isset($_POST['email']) && isset($_POST['mot_de_passe'])&& isset($_POST['username'])) {
-            $email = $_POST['email'];
-            $password = $_POST['mot_de_passe'];
-            $username = $_POST['username'];
-            $user = $this->utilisateurs->registerUser($email,$username, $password);
-    
-            if ($user) {
-                $_SESSION['user'] = $user;
-                $_SESSION['id']= $user['idUtilisateurs'];
-                $_SESSION['username']= $user['nom'];
-                $_SESSION['email']= $user['email'];
-                $_SESSION['role']= $user['role'];
-                require_once('views/posts/index.php');
+      try {
+          if(isset($_POST["submitForm"])){
+              $this->utilisateurs = new Utilisateurs();
               
-            } else {
-              require_once('views/posts/index.php');
-                echo "error authentication";
+              if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['username'])) {
+                  $email = $_POST['email'];
+                  $password = $_POST['password'];
+                  $username = $_POST['username'];
+          
+                  $user = $this->utilisateurs->registerUser($email, $username, $password);
+        
+                  if ($user) {
+                      echo "Votre compte a été créé avec succès. Connectez-vous <a href='/project_LW/auth/index'>ICI</a>";
+                  } else {
+                      echo "Erreur de création de compte ou email existe deja. Veuillez <a href='/project_LW/auth/signUp'>réessayer</a>";
+                  }
+              } else {
+                  echo "Veuillez remplir tous les champs du formulaire";
+              }
+          }else{
+            require_once('views/auth/signUp.php');
             }
-        } else {
-        }
+      } catch (Exception $e) {
+          echo "Une erreur s'est produite : " . $e->getMessage();
       }
-      require_once('views/auth/signUp.php');
-    }
-
+      
+  }
+  
     public function error() {
       require_once('views/auth/error.php');
     }
@@ -73,25 +78,6 @@ require_once('models/user.php');
 
       // Other logic and view rendering
   }
-
-public function signUpUser() {
-  $this->utilisateurs = new Utilisateurs();
-  // Handle login form submission
-  if(isset($_POST['submit'])){
-  if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['mot_de_passe'])) {
-      $email = $_POST['email'];
-      $password = $_POST['mot_de_passe'];
-      $user = $this->utilisateurs->registerUser($email, $password);
-      if ($user) {
-          require_once('views/admin/index.php');
-      } else {
-          echo "error authentication";
-      }
-  } else {
-      // Display login form or handle invalid request
-  }
-}
-}
 
   }
 ?>

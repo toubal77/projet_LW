@@ -22,11 +22,9 @@ class Utilisateurs {
                 if ($password ==$user['mot_de_passe']) {
                     return $user;
                 } else {
-                    // Le mot de passe ne correspond pas
                     return null;
                 }
             } else {
-                // Utilisateur non trouvé
                 return null;
             }
         } catch (PDOException $e) {
@@ -37,47 +35,45 @@ class Utilisateurs {
     
     
     
-
     public function registerUser($email, $username, $password) {
-        $db = Db::getInstance();
-
-        // Replace 'users' with your actual table name and adjust column names accordingly
-        $req = $db->prepare('INSERT INTO users (nom, email, mot_de_passe) VALUES (:username, :email, :password)');
-        $req->execute(array('username' => $username, 'role' => 'user' ,'email' => $email, 'password' => $password));
-
-        // Check if the insertion was successful
-        if ($req->rowCount() > 0) {
-            return true; // User inserted successfully
-        } else {
-            return false; // Failed to insert user
+        try {
+            $db = Db::getInstance();
+            
+            $req = $db->prepare('INSERT INTO users (nom, email, role, mot_de_passe) VALUES (:username, :email, :role, :password)');
+            
+            $req->bindValue(':username', $username);
+            $req->bindValue(':email', $email);
+            $req->bindValue(':role', 'user');
+            $req->bindValue(':password', $password);
+            $req->execute();
+            
+            return $req->rowCount() > 0;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
         }
-    }
-    
-
-    // Lors de la création d'un compte
-    public static function emailExists($email, $ignore_id = null) {
-        $user = static::findByEmail($email);
-
-        if ($user) {
-            return true;
-        }
-        return false;
     }
 
     public static function findByEmail($email) {
-        $db = Db::getInstance();
-        $req = $db->prepare('SELECT * FROM users WHERE email = :email');
-        $req->execute(array('email' => $email));
+        try {
+            $db = Db::getInstance();
+            $req = $db->prepare('SELECT * FROM users WHERE email=:email');
+            $req->bindParam(':email', $email);
+            $req->execute();
+            $user = $req->fetch(PDO::FETCH_ASSOC);
+            if($user){
+                return false;
+            }else{
+                return true;
+            }
 
-        $user = $req->fetch();
-
-        if ($user) {
-            // Replace 'role' with your actual column name
-            return new Utilisateurs($user['idUtilisateurs'], $user['nom'], $user['role'], $user['email'], $user['mot_de_passe']);
-        } else {
-            return null; // User not found
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return null;
         }
     }
+    
+    
 
  
     public function setIdUtilisateurs($idUtilisateurs) {
