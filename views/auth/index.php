@@ -1,3 +1,4 @@
+<?php require_once('config.php'); ?>
 <!DOCTYPE html>
 <html>
 
@@ -9,41 +10,40 @@
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f5f5f5;">
-       <nav style="background-color: #f8f9fa; padding: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+<nav style="background-color: #f8f9fa; padding: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
     <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-        <a style="text-decoration: none; color: #007bff; font-size: 24px; font-weight: bold;" href="/project_LW/posts/index">
-            <i></i> Terminologio
+    <a style="text-decoration: none; color: #007bff; font-size: 24px; font-weight: bold;" href="<?php echo defined('website') ? '/' . website . '/posts/index' : '/posts/index'; ?>"href="/project_LW/posts/index">
+            <i> Terminologio</i>
         </a>
 
-        <div  style="flex-grow: 1;">
+        <div style="flex-grow: 1;">
             <ul style="list-style: none; padding: 0; display: flex; justify-content: flex-end; align-items: center;">
-            <?php if (isset($_SESSION['user'])) : ?>
-    <li style='margin-right: 20px;'>
-        <a style='text-decoration: none; color: #007bff;' href='/project_LW/posts/index'>Post</a>
-    </li>
-<?php endif; ?>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <li style='margin-right: 20px;'>
+                        <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/posts/index' : '/posts/index'; ?>">Post</a>
+                    </li>
 
-<?php if (isset($_SESSION['user'])) : ?>
-    <?php if ($_SESSION['role']!='admin') : ?>
-<li style="margin-right: 20px;">
-                    <a style="text-decoration: none; color: #007bff;" href="/project_LW/posts/create">Create Post</a>
-                </li>
-<?php endif; ?>
-<?php endif; ?>
+                    <?php if ($_SESSION['role'] != 'admin') : ?>
+                        <li style="margin-right: 20px;">
+                            <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/posts/create' : '/posts/create'; ?>">Create Post</a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
 
-<?php if (!isset($_SESSION['user'])) : ?>
-    <li style="margin-right: 20px;">
-        <a style="text-decoration: none; color: #007bff;" href="/project_LW/auth/index">Se connecter</a>
-    </li>
-<?php else : ?>
-    <li style="margin-right: 20px;">
-        <a style="text-decoration: none; color: #007bff;" href="/project_LW/auth/logout">Se déconnecter</a>
-    </li>
-<?php endif; ?>
+                <?php if (!isset($_SESSION['user'])) : ?>
+                    <li style='margin-right: 20px;'>
+                        <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/auth/index' : '/auth/index'; ?>">Se connecter</a>
+                    </li>
+                <?php else : ?>
+                    <li style='margin-right: 20px;'>
+                        <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/auth/logout' : '/auth/logout'; ?>">Se déconnecter</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
+
 
 
 

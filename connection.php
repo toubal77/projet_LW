@@ -1,12 +1,9 @@
 <?php
 
+require_once('config.php');
+
 class Db {
     private static $conn = NULL;
-    const DB_TYPE = 'mysql';
-    const DB_NAME = 'projetLW';
-    const DB_USER = 'root';
-    const DB_PASS = '';
-    const DB_HOST = 'localhost';
 
     private function __construct() {}
 
@@ -15,7 +12,7 @@ class Db {
     public static function getInstance() {
         try {
             if (!self::$conn) {
-                $pdo = new PDO(self::DB_TYPE . ":host=" . self::DB_HOST . ";dbname=" . self::DB_NAME . ";", self::DB_USER, self::DB_PASS);
+                $pdo = new PDO(DB_TYPE . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";", DB_USER, DB_PASS);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
                 self::$conn = $pdo;
@@ -28,3 +25,4 @@ class Db {
     }
 }
 ?>
+

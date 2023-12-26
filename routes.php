@@ -44,7 +44,7 @@ $controller = array_shift($uriParts);
 $action = array_shift($uriParts);
 
 // Handle the case where controller or action is not specified
-$controller = !empty($controller) ? $controller : 'posts';
+$controller = !empty($controller) ? $controller : 'auth';
 $action = !empty($action) ? $action : 'index';
 
 
