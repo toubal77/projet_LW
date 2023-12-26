@@ -1,4 +1,5 @@
 <?php
+session_start();
   class PostsController {
     public function index() {
       // we store all the posts in a variable

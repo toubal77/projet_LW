@@ -65,19 +65,17 @@ require_once('models/user.php');
       }
       
   }
-  
+
+
+  public function logout() {
+    session_start();
+    session_unset();
+    session_destroy();
+    header("Location: /project_LW/auth/index");
+  }
     public function error() {
       require_once('views/auth/error.php');
     }
-  
-
-    public function handleRequest() {
-      if (isset($_POST['submitForm'])) {
-          $this->login();
-      }
-
-      // Other logic and view rendering
-  }
 
   }
 ?>

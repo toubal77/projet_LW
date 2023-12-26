@@ -23,7 +23,7 @@
 
 // we're adding an entry for the new controller and its actions
 $controllers = array(
-  'auth' => ['index', 'signUp'],
+  'auth' => ['index', 'signUp','logout'],
   'posts' => ['index', 'create','show'],
   'admin' => ['index', 'show']
 );
@@ -44,7 +44,7 @@ $controller = array_shift($uriParts);
 $action = array_shift($uriParts);
 
 // Handle the case where controller or action is not specified
-$controller = !empty($controller) ? $controller : 'auth';
+$controller = !empty($controller) ? $controller : 'posts';
 $action = !empty($action) ? $action : 'index';
 
 
