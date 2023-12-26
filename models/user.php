@@ -1,5 +1,5 @@
 <?php
-
+require_once('connection.php');
 class Utilisateurs {
     public $idUtilisateurs;
     public $nom;
@@ -7,20 +7,35 @@ class Utilisateurs {
     public $email;
     public $mot_de_passe;
 
+    public function __construct() {
+
+    }
+
     public function loginUser($email, $password) {
-        $db = Db::getInstance();
-        $req = $db->prepare('SELECT * FROM users WHERE email = :email AND mot_de_passe = :password');
-        $req->execute(array('email' => $email, 'password' => $password));
-
-        $user = $req->fetch();
-
-        if ($user) {
-            // Replace 'role' with your actual column name
-            return new Utilisateurs($user['idUtilisateurs'], $user['nom'], $user['role'], $user['email'], $user['mot_de_passe']);
-        } else {
-            return null; // Authentication failed
+        try {
+            $db = Db::getInstance();
+            $req = $db->prepare('SELECT * FROM users WHERE email=:email');
+            $req->bindParam(':email', $email);
+            $req->execute();
+            $user = $req->fetch(PDO::FETCH_ASSOC);
+            if ($user) {
+                if ($password ==$user['mot_de_passe']) {
+                    return $user;
+                } else {
+                    // Le mot de passe ne correspond pas
+                    return null;
+                }
+            } else {
+                // Utilisateur non trouvé
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return null;
         }
     }
+    
+    
     
 
     public function registerUser($email, $username, $password) {

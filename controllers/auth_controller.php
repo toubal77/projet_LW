@@ -1,36 +1,36 @@
 <?php
 session_start();
+require_once('models/user.php');
   class AuthController {
 
     public function index() {
-
       if(isset($_POST["submitForm"])){
         $this->utilisateurs = new Utilisateurs();
-        // Handle login form submission
-        if (isset($_POST['email']) && isset($_POST['mot_de_passe'])) {
+        if (isset($_POST['email']) && isset($_POST['password'])) {
             $email = $_POST['email'];
-            $password = $_POST['mot_de_passe'];
+            $password = $_POST['password'];
             $user = $this->utilisateurs->loginUser($email, $password);
-    
             if ($user) {
               $_SESSION['user'] = $user;
               $_SESSION['id']= $user['idUtilisateurs'];
               $_SESSION['username']= $user['nom'];
               $_SESSION['email']= $user['email'];
               $_SESSION['role']= $user['role'];
-              if($user['role']='admin'){
+              if($user['role']=='admin'){
                require_once('views/admin/index.php');
-              }else if($user['role']='user'){
+              }else if($user['role']=='user'){
                 require_once('views/posts/index.php');
               }
             } else {
-              require_once('views/posts/index.php');
-                echo "error authentication";
+           //   require_once('views/posts/index.php');
+           echo "Votre identifiant semble incorrect. <a href='/project_LW/auth/index'>Réessayer</a>";
             }
         } else {
+          echo " je suis pas rentre dans la confition email mdps";
         }
-      }
+      }else{
       require_once('views/auth/index.php');
+      }
     }
 
     public function signUp() {

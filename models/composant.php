@@ -5,12 +5,15 @@ class Composant {
     public $coordonnees;
     public $description;
 
-    public function __construct($idComposant, $idIllustration, $coordonnees, $description) {
-        $this->idComposant = $idComposant;
-        $this->idIllustration = $idIllustration;
-        $this->coordonnees = $coordonnees;
-        $this->description = $description;
-    }
+  //  public function __construct($idComposant, $idIllustration, $coordonnees, $description) {
+   //     $this->idComposant = $idComposant;
+   //     $this->idIllustration = $idIllustration;
+   //     $this->coordonnees = $coordonnees;
+    //    $this->description = $description;
+   // }
+   public function __construct() {
+
+   }
 
     public static function all() {
         $list = [];

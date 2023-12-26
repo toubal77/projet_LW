@@ -7,14 +7,19 @@ class Illustration {
     public $langueParDefaut;
     public $idUtilisateurs;
 
-    public function __construct($idIllustration, $titre, $format,$image, $langueParDefaut, $idUtilisateurs) {
-        $this->idIllustration = $idIllustration;
-        $this->titre = $titre;
-        $this->format = $format;
-        $this->image = $image;
-        $this->langueParDefaut = $langueParDefaut;
-        $this->idUtilisateurs = $idUtilisateurs;
+   // public function __construct($idIllustration, $titre, $format,$image, $langueParDefaut, $idUtilisateurs) {
+    //    $this->idIllustration = $idIllustration;
+    //    $this->titre = $titre;
+    //    $this->format = $format;
+    //    $this->image = $image;
+    //    $this->langueParDefaut = $langueParDefaut;
+    //    $this->idUtilisateurs = $idUtilisateurs;
+    //}
+
+    public function __construct() {
+
     }
+
 
     public static function all() {
         $list = [];

@@ -5,11 +5,14 @@
     public $author;
     public $content;
 
-    public function __construct($id, $author, $content) {
-      $this->id      = $id;
-      $this->author  = $author;
-      $this->content = $content;
-    }
+   // public function __construct($id, $author, $content) {
+    //  $this->id      = $id;
+    //  $this->author  = $author;
+    //  $this->content = $content;
+   // }
+   public function __construct() {
+
+   }
 
     public static function all() {
       $list = [];

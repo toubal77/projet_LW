@@ -11,6 +11,10 @@ class Terminologie {
   //      $this->langueParDefaut = $langueParDefaut;
   //      $this->traduction = $traduction;
   //  }
+  public function __construct() {
+
+  }
+
 
     public static function all() {
         $list = [];
