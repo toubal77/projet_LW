@@ -62,7 +62,7 @@ require_once('models/user.php');
                     
                   } else {
                     echo '<script>';
-                    echo 'alert("Erreur de création de compte ou email existe deja. Veuillez réessayer");';
+                    echo 'alert("Erreur de création de compte ou email existe déjà. Veuillez réessayer");';
                     echo 'window.location.href = "/project_LW/auth/signUp";'; 
                     echo '</script>';
                   }

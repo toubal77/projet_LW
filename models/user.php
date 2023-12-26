@@ -54,6 +54,26 @@ class Utilisateurs {
         }
     }
 
+
+    public function createUser($email, $username, $role, $password) {
+        try {
+            $db = Db::getInstance();
+            
+            $req = $db->prepare('INSERT INTO users (nom, email, role, mot_de_passe) VALUES (:username, :email, :role, :password)');
+            
+            $req->bindValue(':username', $username);
+            $req->bindValue(':email', $email);
+            $req->bindValue(':role', $role);
+            $req->bindValue(':password', $password);
+            $req->execute();
+            
+            return $req->rowCount() > 0;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
+        }
+    }
+
     public static function findByEmail($email) {
         try {
             $db = Db::getInstance();

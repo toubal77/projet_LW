@@ -72,6 +72,7 @@
 </table>
 
 <h2 style="text-align: center; color: #333;">User Accounts</h2>
+<button onclick="location.href='/project_LW/admin/createUser';" style="float: right;margin-bottom: 20px;margin-right: 50px;">Créer un utilisateur</button>
 <table style="width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left;">
     <thead>
         <tr>

@@ -25,7 +25,7 @@
 $controllers = array(
   'auth' => ['index', 'signUp','logout'],
   'posts' => ['index', 'create','show'],
-  'admin' => ['index', 'show']
+  'admin' => ['index', 'show','createUser']
 );
 
 // Get the request URI

@@ -39,5 +39,43 @@ require_once('models/user.php');
     public function error() {
       require_once('views/admin/error.php');
     }
+    public function createUser() {
+      try {
+        if(isset($_POST["submitForm"])){
+            $this->utilisateurs = new Utilisateurs();
+            
+            if (isset($_POST['email']) && isset($_POST['password']) &&isset($_POST['role']) && isset($_POST['username'])) {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $username = $_POST['username'];
+                $role = $_POST['role'];
+        echo $email."-".$password."-".$username."-".$role.
+                $user = $this->utilisateurs->createUser($email, $username, $role, $password);
+      
+                if ($user) {
+                  echo '<script>';
+                  echo 'alert("Utilisateur crée avec succès");';
+                  echo 'window.location.href = "/project_LW/admin/index";'; 
+                  echo '</script>';
+                  
+                } else {
+                  echo '<script>';
+                  echo 'alert("Erreur de création de compte ou email existe déjà. Veuillez réessayer");';
+                  echo 'window.location.href = "/project_LW/admin/createUser";'; 
+                  echo '</script>';
+                }
+            } else {
+              echo '<script>';
+              echo 'alert("Veuillez remplir tous les champs du formulaire");';
+              echo 'window.location.href = "/project_LW/admin/createUser";'; 
+              echo '</script>';
+            }
+        }else{
+          require_once('views/admin/createUser.php');
+        }
+    } catch (Exception $e) {
+        echo "Une erreur s'est produite : " . $e->getMessage();
+    }
+    }
   }
 ?>
