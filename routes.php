@@ -21,34 +21,27 @@
     $controller->{ $action }();
   }
 
-// we're adding an entry for the new controller and its actions
+
 $controllers = array(
   'auth' => ['index', 'signUp','logout'],
   'posts' => ['index', 'create','show'],
   'admin' => ['index', 'show','createUser']
 );
 
-// Get the request URI
 $requestURI = $_SERVER['REQUEST_URI'];
-// Split the URI into parts
+
 $uriParts = explode('/', $requestURI);
 
-// Remove empty elements
 $uriParts = array_filter($uriParts);
 
-// Remove the project base directory
 $projectDirectory = array_shift($uriParts);
 
-// Extract the controller and action from the remaining URI parts
 $controller = array_shift($uriParts);
 $action = array_shift($uriParts);
 
-// Handle the case where controller or action is not specified
 $controller = !empty($controller) ? $controller : 'auth';
 $action = !empty($action) ? $action : 'index';
 
-
-// Call the appropriate controller and action
 if (array_key_exists($controller, $controllers) && in_array($action, $controllers[$controller])) {
   call($controller, $action);
 }
