@@ -3,8 +3,8 @@ session_start();
 require_once('models/illustration.php');
   class PostsController {
     public function index() {
-      // we store all the posts in a variable
-     // $posts = Post::all();
+      $this->illustration = new Illustration();
+      $illustrations = $this->illustration->getAllIllustrations();
       require_once('views/posts/index.php');
     }
  
