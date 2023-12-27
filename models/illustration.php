@@ -6,6 +6,7 @@ class Illustration {
     public $titre;
     public $format;
     public $image;
+    public $description;
     public $langueParDefaut;
     public $idUtilisateurs;
 
@@ -23,15 +24,16 @@ class Illustration {
     }
 
 
-    public function addIllus($titre, $format, $langueParDefaut, $image) {
+    public function addIllus($titre, $format, $langueParDefaut, $description, $image) {
         try {
             $db = Db::getInstance();
             
-            $req = $db->prepare('INSERT INTO illustrations (titre, format, langueParDefaut, idUtilisateur, image) VALUES (:titre, :format, :langueParDefaut, :idUtilisateur, :image)');
+            $req = $db->prepare('INSERT INTO illustrations (titre, format, langueParDefaut, idUtilisateur,description, image) VALUES (:titre, :format, :langueParDefaut, :idUtilisateur, :description, :image)');
             
             $req->bindValue(':titre', $titre);
             $req->bindValue(':format', $format);
             $req->bindValue(':langueParDefaut', $langueParDefaut);
+            $req->bindValue(':description', $description);
             $req->bindValue(':idUtilisateur', $_SESSION['id']);
             $req->bindValue(':image', $image);
             $req->execute();

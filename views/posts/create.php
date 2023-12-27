@@ -53,15 +53,24 @@
     <input type="text" id="titre" name="titre" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
 
     <label for="format" style="display: block; margin-bottom: 5px; color: #333;">Format:</label>
-    <input type="text" id="format" placeholder="Svg" name="format" disabled style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
+    <select name="format" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"required>
+        <option value="PNG">PNG</option>
+        <option value="JPG">JPG</option>
+        <option value="JPEG">JPEG</option>
+        <option value="SVG">SVG</option>
+    </select>
 
+    <label for="format" style="display: block; margin-bottom: 5px; color: #333;">La langue de illustration:</label>
     <select name="langueParDefaut" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"required>
         <option value="Francais">Francais</option>
         <option value="Anglais">Anglais</option>
         <option value="Anglais">Chinois</option>
     </select>
-    <label for="svgImage" style="display: block; margin-bottom: 5px; color: #333;">SVG Image:</label>
-    <input type="file" id="svgImage" name="svgImage" accept=".svg" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
+    <label for="svgImage" style="display: block; margin-bottom: 5px; color: #333;">Image:</label>
+    <input type="file" id="svgImage" name="svgImage" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
+
+    <label for="description" style="display: block; margin-bottom: 5px; color: #333;">Description:</label>
+    <textarea id="description" name="description" rows="4" cols="50" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"></textarea>
 
     <input type="submit" value="Submit" name="submitForm" style="background-color: #007bff; color: #fff; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
 </form>

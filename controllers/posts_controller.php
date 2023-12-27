@@ -15,12 +15,23 @@ require_once('models/illustration.php');
       if(isset($_POST["submitForm"])){
 
            $this->illustration = new Illustration();
-        if (isset($_POST['titre']) &&isset($_POST['langueParDefaut']) &&isset($_FILES['svgImage'])){
+        if (isset($_POST['titre']) && isset($_POST['format']) &&isset($_POST['langueParDefaut'])&& isset($_POST['description'])  &&isset($_FILES['svgImage'])){
             $titre = $_POST['titre'];
-            $format = 'svg';
+            $format = $_POST['format'];
+            $description = $_POST['description'];
             $langueParDefaut = $_POST['langueParDefaut'];
             $svgImage = $_FILES['svgImage'];
-            $illustration = $this->illustration->addIllus($titre, $format,$langueParDefaut, $svgImage);
+
+            $formatsAutorises = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg+xml'];
+            if (!in_array($svgImage['type'], $formatsAutorises)) {
+              echo '<script>';
+              echo 'alert("Le format de la photo n\'est pas autorisé. Veuillez choisir une photo au format PNG, JPG, JPEG ou SVG");';
+              echo 'window.location.href = "/project_LW/posts/create";'; 
+              echo '</script>';
+            } else {
+
+            
+            $illustration = $this->illustration->addIllus($titre, $format,$langueParDefaut, $description, $svgImage);
        
            if ($illustration) {
             echo '<script>';
@@ -33,6 +44,7 @@ require_once('models/illustration.php');
             echo 'window.location.href = "/project_LW/posts/create";'; 
             echo '</script>';
            }
+          }
         } else {
           echo '<script>';
           echo 'alert("Veuillez remplir tous les champs du formulaire");';
