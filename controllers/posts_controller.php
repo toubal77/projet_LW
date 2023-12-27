@@ -9,6 +9,9 @@ require_once('models/illustration.php');
     }
 
     public function create() {
+      if(!isset($_SESSION['user'])){
+        header("Location: /project_LW/auth/index");
+      }
       if(isset($_POST["submitForm"])){
 
            $this->illustration = new Illustration();

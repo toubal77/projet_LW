@@ -6,6 +6,9 @@ require_once('models/illustration.php');
     public function index() {
 
         try {
+          if(!isset($_SESSION['user'])){
+            header("Location: /project_LW/auth/index");
+          }
           $this->utilisateurs = new Utilisateurs();
           $this->illustration = new Illustration();
           if(isset($_POST["submitForm"])){
@@ -42,6 +45,9 @@ require_once('models/illustration.php');
     }
     public function createUser() {
       try {
+        if(!isset($_SESSION['user'])){
+            header("Location: /project_LW/auth/index");
+          }
         if(isset($_POST["submitForm"])){
             $this->utilisateurs = new Utilisateurs();
             
