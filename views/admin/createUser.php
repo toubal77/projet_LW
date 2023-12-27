@@ -18,27 +18,15 @@
 
         <div style="flex-grow: 1;">
             <ul style="list-style: none; padding: 0; display: flex; justify-content: flex-end; align-items: center;">
-                <?php if (isset($_SESSION['user'])) : ?>
-                    <li style='margin-right: 20px;'>
-                        <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/posts/index' : '/posts/index'; ?>">Post</a>
-                    </li>
-
-                    <?php if ($_SESSION['role'] != 'admin') : ?>
-                        <li style="margin-right: 20px;">
-                            <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/posts/create' : '/posts/create'; ?>">Create Post</a>
+            <li style="margin-right: 20px;">
+                            <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/admin/index' : '/admin/index'; ?>">Consulte illustrations</a>
                         </li>
-                    <?php endif; ?>
-                <?php endif; ?>
-
-                <?php if (!isset($_SESSION['user'])) : ?>
-                    <li style='margin-right: 20px;'>
-                        <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/auth/index' : '/auth/index'; ?>">Se connecter</a>
-                    </li>
-                <?php else : ?>
+                        <li style="margin-right: 20px;">
+                            <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/admin/consulteUser' : '/admin/consulteUser'; ?>">Consulte utilisateurs</a>
+                        </li>
                     <li style='margin-right: 20px;'>
                         <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/auth/logout' : '/auth/logout'; ?>">Se déconnecter</a>
                     </li>
-                <?php endif; ?>
             </ul>
         </div>
     </div>

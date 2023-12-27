@@ -19,10 +19,19 @@
         <div style="flex-grow: 1;">
             <ul style="list-style: none; padding: 0; display: flex; justify-content: flex-end; align-items: center;">
                 <?php if (isset($_SESSION['user'])) : ?>
+                    <?php if ($_SESSION['role'] != 'admin') : ?>
                     <li style='margin-right: 20px;'>
                         <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/posts/index' : '/posts/index'; ?>">Post</a>
                     </li>
-
+                    <?php endif; ?>
+                    <?php if ($_SESSION['role'] == 'admin') : ?>
+                        <li style="margin-right: 20px;">
+                            <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/admin/index' : '/admin/index'; ?>">Consulte illustrations</a>
+                        </li>
+                        <li style="margin-right: 20px;">
+                            <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/admin/consulteUser' : '/admin/consulteUser'; ?>">Consulte utilisateurs</a>
+                        </li>
+                        <?php endif; ?>
                     <?php if ($_SESSION['role'] != 'admin') : ?>
                         <li style="margin-right: 20px;">
                             <a style="text-decoration: none; color: #007bff;" href="<?php echo defined('website') ? '/' . website . '/posts/create' : '/posts/create'; ?>">Create Post</a>

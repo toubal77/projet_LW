@@ -29,8 +29,8 @@ require_once('models/illustration.php');
               }
             }
           }
-          $users = $this->utilisateurs->getAllUsers();
-    //      $illustrations = $this->illustration->getAllIllustrations();
+      //    $users = $this->utilisateurs->getAllUsers();
+         $illustrations = $this->illustration->getAllIllustrations();
       //    echo "----ici" . print_r($illustrations, true);
           require_once('views/admin/index.php');
       } catch (Exception $e) {
@@ -40,6 +40,12 @@ require_once('models/illustration.php');
  
     }
 
+    public function consulteUser() {
+      $this->utilisateurs = new Utilisateurs();
+      $users = $this->utilisateurs->getAllUsers();
+      require_once('views/admin/consulteUser.php');
+    }
+    
     public function error() {
       require_once('views/admin/error.php');
     }
