@@ -7,32 +7,28 @@ require_once('models/illustration.php');
      // $posts = Post::all();
       require_once('views/posts/index.php');
     }
-
+ 
     public function create() {
       if(!isset($_SESSION['user'])){
         header("Location: /project_LW/auth/index");
       }
       if(isset($_POST["submitForm"])){
-
            $this->illustration = new Illustration();
-        if (isset($_POST['titre']) && isset($_POST['format']) &&isset($_POST['langueParDefaut'])&& isset($_POST['description'])  &&isset($_FILES['svgImage'])){
+        if (isset($_POST['titre']) && isset($_POST['langueParDefaut'])&& isset($_POST['description'])  &&isset($_POST['svgImage'])){ 
             $titre = $_POST['titre'];
-            $format = $_POST['format'];
             $description = $_POST['description'];
             $langueParDefaut = $_POST['langueParDefaut'];
-            $svgImage = $_FILES['svgImage'];
-
-            $formatsAutorises = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg+xml'];
-            if (!in_array($svgImage['type'], $formatsAutorises)) {
+            $svgImage = $_POST['svgImage'];
+            $checkExt = fileExtension($_POST['svgImage']);
+            if (!$checkExt) {
               echo '<script>';
               echo 'alert("Le format de la photo n\'est pas autorisé. Veuillez choisir une photo au format PNG, JPG, JPEG ou SVG");';
               echo 'window.location.href = "/project_LW/posts/create";'; 
               echo '</script>';
             } else {
+              echo "je suis ici ";
+              $illustration = $this->illustration->addIllus($titre, $langueParDefaut, $description, $svgImage);
 
-            
-            $illustration = $this->illustration->addIllus($titre, $format,$langueParDefaut, $description, $svgImage);
-       
            if ($illustration) {
             echo '<script>';
             echo 'alert("Illustration ajouter avec succès");';
@@ -61,4 +57,15 @@ require_once('models/illustration.php');
         require_once('views/posts/show.php');
     }
   }
+
+  function fileExtension($filename) {
+    $formatsAut = ['.png', '.jpg', '.jpeg', '.svg'];
+    foreach ($formatsAut as $extensionAut) {
+        $check = strpos($filename, $extensionAut);
+        if ($check !== false) {
+            return true;
+        }
+    }
+    return false;
+}
 ?>

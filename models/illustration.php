@@ -4,7 +4,6 @@ require_once('connection.php');
 class Illustration {
     public $idIllustration;
     public $titre;
-    public $format;
     public $image;
     public $description;
     public $langueParDefaut;
@@ -24,14 +23,13 @@ class Illustration {
     }
 
 
-    public function addIllus($titre, $format, $langueParDefaut, $description, $image) {
+    public function addIllus($titre, $langueParDefaut, $description, $image) {
         try {
             $db = Db::getInstance();
             
-            $req = $db->prepare('INSERT INTO illustrations (titre, format, langueParDefaut, idUtilisateur,description, image) VALUES (:titre, :format, :langueParDefaut, :idUtilisateur, :description, :image)');
+            $req = $db->prepare('INSERT INTO illustrations (titre, langueParDefaut, idUtilisateur,description, image) VALUES (:titre, :langueParDefaut, :idUtilisateur, :description, :image)');
             
             $req->bindValue(':titre', $titre);
-            $req->bindValue(':format', $format);
             $req->bindValue(':langueParDefaut', $langueParDefaut);
             $req->bindValue(':description', $description);
             $req->bindValue(':idUtilisateur', $_SESSION['id']);
