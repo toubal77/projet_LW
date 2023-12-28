@@ -7,6 +7,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Terminologio</title>
         <link rel="stylesheet" href="views/auth/styles/auth.css">
+
+
+        <style>
+        form {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f5f5f5;">
@@ -61,7 +90,7 @@
                 </form>
                 <form method="post" action="">
                     <input type="hidden" name="illId" value="<?php echo $illustration['idIllustration']; ?>">
-                    <button type="submit" name="submitFormDelete" style="padding: 5px 10px; cursor: pointer;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet illustration ?')">Delete</button>
+                    <button type="submit" name="submitFormDelete" style="cursor: pointer;  background-color: #e74c3c;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet illustration ?')">Delete</button>
                 </form>
             </td>
             </tr>

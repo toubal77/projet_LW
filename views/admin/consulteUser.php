@@ -7,6 +7,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Terminologio</title>
         <link rel="stylesheet" href="views/auth/styles/auth.css">
+
+        <style>
+
+        form {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #c0392b;
+        }
+        </style>
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f5f5f5;">
@@ -38,7 +66,7 @@
 
 
 <h2 style="text-align: center; color: #333;">User Accounts</h2>
-<button onclick="location.href='/project_LW/admin/createUser';" style="float: right;margin-bottom: 20px;margin-right: 50px;">Créer un utilisateur</button>
+<button onclick="location.href='/project_LW/admin/createUser';" style="float: right;margin-bottom: 20px;margin-right: 50px; background-color: #2ecc71;">Créer un utilisateur</button>
 <table style="width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left;">
     <thead>
         <tr>
