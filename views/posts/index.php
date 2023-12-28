@@ -58,14 +58,18 @@
     <h1 style="background-color: #333; color: #fff; padding: 20px; text-align: center;">Bienvenue sur la Page d'Accueil</h1>
 
     <div style="display: flex; flex-direction: column; align-items: center; margin: 20px;">
-        <!-- Afficher tous les posts -->
-        <?php foreach ($illustrations as $illustration) : ?>
+    <?php if (empty($illustrations)) : ?>
+    <div style="text-align: center; font-weight: bold; margin-top: 10px;">Aucune illustration disponible</div>
+<?php else : ?>
+    <?php foreach ($illustrations as $illustration) : ?>
         <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             <img src="assets/<?php echo $illustration['image']; ?>" alt="assets/<?php echo $illustration['image']; ?>" style="max-width: 100%; height: auto; margin-bottom: 10px;">
             <h2 style="color: #333; margin-bottom: 10px;">Titre - <?php echo $illustration['titre']; ?></h2>
             <p style="color: #666; line-height: 1.6;">Description - <?php echo $illustration['description']; ?></p>
         </div>
-        <?php endforeach; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+
 
     </div>
 

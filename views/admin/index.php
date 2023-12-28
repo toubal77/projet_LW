@@ -77,24 +77,31 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($illustrations as $illustration) : ?>
-            <tr>
-                <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['titre']; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['image']; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['langueParDefaut']; ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['description'] ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;">
+    <?php if (empty($illustrations)) : ?>
+    <tr>
+    <td colspan="5" style="text-align: center; font-weight: bold; padding-top: 50px;">Aucune illustration disponible</td>
+    </tr>
+<?php else : ?>
+    <?php foreach ($illustrations as $illustration) : ?>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['titre']; ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['image']; ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['langueParDefaut']; ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['description'] ?></td>
+            <td style="border: 1px solid #ddd; padding: 8px;">
                 <form action="/project_LW/admin/show" method="post">
-                     <input type="hidden" name="illId" value="<?php echo $illustration['idIllustration']; ?>">
-                     <input type="submit" value="Show">
+                    <input type="hidden" name="illId" value="<?php echo $illustration['idIllustration']; ?>">
+                    <input type="submit" value="Show">
                 </form>
                 <form method="post" action="">
                     <input type="hidden" name="illId" value="<?php echo $illustration['idIllustration']; ?>">
                     <button type="submit" name="submitFormDelete" style="cursor: pointer;  background-color: #e74c3c;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet illustration ?')">Delete</button>
                 </form>
             </td>
-            </tr>
-        <?php endforeach; ?>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>
+
     </tbody>
 </table>
 
