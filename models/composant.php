@@ -6,18 +6,9 @@ class Composant {
     public $position_y;
     public $composant;
 
-  //  public function __construct($idComposant, $idIllustration, $coordonnees, $description) {
-   //     $this->idComposant = $idComposant;
-   //     $this->idIllustration = $idIllustration;
-   //     $this->coordonnees = $coordonnees;
-    //    $this->description = $description;
-   // }
    public function __construct() {
 
    }
-
-
-
 
    public function add($idILl, $description, $vecteur_y, $vecteur_x) {
     try {
@@ -65,38 +56,6 @@ class Composant {
             echo "Une erreur s'est produite : " . $e->getMessage();
             return false;
         }
-    }
-
-    public function getIdComposant() {
-        return $this->idComposant;
-    }
-
-    public function setIdComposant($idComposant) {
-        $this->idComposant = $idComposant;
-    }
-
-    public function getIdIllustration() {
-        return $this->idIllustration;
-    }
-
-    public function setIdIllustration($idIllustration) {
-        $this->idIllustration = $idIllustration;
-    }
-
-    public function getCoordonnees() {
-        return $this->coordonnees;
-    }
-
-    public function setCoordonnees($coordonnees) {
-        $this->coordonnees = $coordonnees;
-    }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
-    public function setDescription($description) {
-        $this->description = $description;
     }
 
 }

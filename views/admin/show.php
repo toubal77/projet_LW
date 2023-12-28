@@ -33,7 +33,6 @@
 </nav>
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px;">
-        <!-- Afficher tous les posts -->
         <?php foreach ($illustration as $ill) : ?>
         <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             <img src="assets/<?php echo $ill['image']; ?>" alt="assets/<?php echo $ill['image']; ?>" style="max-width: 100%; height: auto; margin-bottom: 10px;">

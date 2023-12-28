@@ -9,15 +9,6 @@ class Illustration {
     public $langueParDefaut;
     public $idUtilisateurs;
 
-   // public function __construct($idIllustration, $titre, $format,$image, $langueParDefaut, $idUtilisateurs) {
-    //    $this->idIllustration = $idIllustration;
-    //    $this->titre = $titre;
-    //    $this->format = $format;
-    //    $this->image = $image;
-    //    $this->langueParDefaut = $langueParDefaut;
-    //    $this->idUtilisateurs = $idUtilisateurs;
-    //}
-
     public function __construct() {
 
     }
@@ -103,55 +94,6 @@ class Illustration {
             return false;
         }
     }
-
- public function getIdIllustration() {
-    return $this->idIllustration;
-}
-
-public function setIdIllustration($idIllustration) {
-    $this->idIllustration = $idIllustration;
-}
-
-public function getTitre() {
-    return $this->titre;
-}
-
-public function setTitre($titre) {
-    $this->titre = $titre;
-}
-
-public function getFormat() {
-    return $this->format;
-}
-
-public function setFormat($format) {
-    $this->format = $format;
-}
-
-public function getImage() {
-    return $this->image;
-}
-
-public function setImage($image) {
-    $this->image = $image;
-}
-
-public function getLangueParDefaut() {
-    return $this->langueParDefaut;
-}
-
-public function setLangueParDefaut($langueParDefaut) {
-    $this->langueParDefaut = $langueParDefaut;
-}
-
-public function getIdUtilisateurs() {
-    return $this->idUtilisateurs;
-}
-
-public function setIdUtilisateurs($idUtilisateurs) {
-    $this->idUtilisateurs = $idUtilisateurs;
-}
-
 
 }
 ?>

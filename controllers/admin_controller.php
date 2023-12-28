@@ -28,9 +28,7 @@ require_once('models/illustration.php');
               }
             }
           }
-      //    $users = $this->utilisateurs->getAllUsers();
-         $illustrations = $this->illustration->getAllIllustrations();
-      //    echo "----ici" . print_r($illustrations, true);
+          $illustrations = $this->illustration->getAllIllustrations();
           require_once('views/admin/index.php');
       } catch (Exception $e) {
         echo "Une erreur s'est produite : " . $e->getMessage();
