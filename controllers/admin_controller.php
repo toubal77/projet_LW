@@ -41,6 +41,7 @@ require_once('models/illustration.php');
     }
 
     public function consulteUser() {
+      $this->utilisateurs = new Utilisateurs();
       if(isset($_POST["submitForm"])){
         if (isset($_POST['userId'])) {
           $userId = $_POST['userId'];
@@ -48,18 +49,17 @@ require_once('models/illustration.php');
           if($user){
             echo '<script>';
             echo 'alert("L\'utilisateur a été supprimer avec succès");';
-            echo 'window.location.href = "/project_LW/admin/index";'; 
+            echo 'window.location.href = "/project_LW/admin/consulteUser";'; 
             echo '</script>';
 
           }else{
             echo '<script>';
             echo 'alert("L\'utilisateur n\'a pas été supprimé, une erreur est survenue");';
-            echo 'window.location.href = "/project_LW/admin/index";'; 
+            echo 'window.location.href = "/project_LW/admin/consulteUser";'; 
             echo '</script>';
           }
         }
       }
-      $this->utilisateurs = new Utilisateurs();
       $users = $this->utilisateurs->getAllUsers();
       require_once('views/admin/consulteUser.php');
     }
@@ -89,6 +89,9 @@ require_once('models/illustration.php');
     public function error() {
       require_once('views/admin/error.php');
     }
+
+
+
     public function createUser() {
       try {
         if(!isset($_SESSION['user'])){
@@ -102,13 +105,12 @@ require_once('models/illustration.php');
                 $password = $_POST['password'];
                 $username = $_POST['username'];
                 $role = $_POST['role'];
-        echo $email."-".$password."-".$username."-".$role.
                 $user = $this->utilisateurs->createUser($email, $username, $role, $password);
       
                 if ($user) {
                   echo '<script>';
                   echo 'alert("Utilisateur crée avec succès");';
-                  echo 'window.location.href = "/project_LW/admin/index";'; 
+                  echo 'window.location.href = "/project_LW/admin/consulteUser";'; 
                   echo '</script>';
                   
                 } else {
