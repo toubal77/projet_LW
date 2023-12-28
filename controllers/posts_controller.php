@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('models/illustration.php');
+require_once('models/composant.php');
   class PostsController {
     public function index() {
       $this->illustration = new Illustration();
@@ -56,15 +57,31 @@ require_once('models/illustration.php');
 
     public function show() {
           $this->illustrations = new Illustration();
+          $this->composants = new Composant();
+
+          if (isset($_POST['position_y']) && isset($_POST['position_x']) && isset($_POST['composant'])) { 
+            $position_y = $_POST['position_y'];
+            $position_x = $_POST['position_x'];
+            $composant = $_POST['composant'];
+            $composants = $this->composants->add($_SESSION['idIll'],$composant,$position_y,$position_x);
+            
+            if ($composants) {
+              echo '<script>';
+              echo 'alert("Composants ajouter avec succès");';
+             echo 'window.location.href = "/project_LW/posts/show";'; 
+              echo '</script>';
+            } else {
+              echo '<script>';
+              echo 'alert("Erreur lors de création d\'une Composants. Réessayer");';
+             echo 'window.location.href = "/project_LW/posts/create";'; 
+              echo '</script>';
+            }
+          } 
           $illustration = $this->illustrations->findIll();
-          if($illustration){
+         $_SESSION['idIll'] = $illustration[0]['idIllustration']; 
+         if($illustration){
             require_once('views/posts/show.php');
-          }else{
-          echo '<script>';
-          echo 'alert("Une erreur est survenue. Réessayer plus tard");';
-          echo 'window.location.href = "/project_LW/admin/index";'; 
-          echo '</script>';
-        }
+          }
 
     }
   }

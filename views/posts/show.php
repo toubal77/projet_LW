@@ -57,12 +57,13 @@
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px;">
         <!-- Afficher tous les posts -->
         <?php foreach ($illustration as $ill) : ?>
-        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-            <img src="assets/<?php echo $ill['image']; ?>" alt="assets/<?php echo $ill['image']; ?>" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-            <h2 style="color: #333; margin-bottom: 10px;">Titre - <?php echo $ill['titre']; ?></h2>
-            <p style="color: #666; line-height: 1.6;">Description - <?php echo $ill['description']; ?></p>
-        </div>
-        <?php endforeach; ?>
+    <div class="clickable-image-container" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <img src="assets/<?php echo $ill['image']; ?>" alt="assets/<?php echo $ill['image']; ?>" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+        <h2 style="color: #333; margin-bottom: 10px;">Titre - <?php echo $ill['titre']; ?></h2>
+        <p style="color: #666; line-height: 1.6;">Description - <?php echo $ill['description']; ?></p>
+    </div>
+<?php endforeach; ?>
+
 
     </div>
 
@@ -71,5 +72,55 @@
         <p style="margin: 0; font-size: 14px;">&copy; 2023 Université de Rouen Normandie. All rights reserved. | Website by TOUBAL Zine-Eddine SOUALMI Majda</p>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var clickableImages = document.querySelectorAll('.clickable-image-container img');
+
+        clickableImages.forEach(function (image) {
+            image.addEventListener('click', function (event) {
+                var x = event.clientX;
+                var y = event.clientY;
+                showDescriptionForm(x, y);
+            });
+        });
+
+        function showDescriptionForm(x, y) {
+    var formContainer = document.createElement('div');
+    formContainer.style.position = 'fixed';
+    formContainer.style.top = y + 'px';
+    formContainer.style.left = (x + 20) + 'px';
+
+    var descriptionForm = document.createElement('form');
+    descriptionForm.action = '';
+    descriptionForm.method = 'post';
+
+    descriptionForm.innerHTML = `
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="composant" placeholder="Quel est le nom de ce composant ?" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
+        <input type="hidden" id="position_y" name="position_y" value="${y}">
+        <input type="hidden" id="position_x" name="position_x" value="${x}">
+        <br>
+        <input type="submit" name="submitForm" value="Submit" style="cursor: pointer;">
+    `;
+
+    formContainer.appendChild(descriptionForm);
+    document.body.appendChild(formContainer);
+
+    descriptionForm.addEventListener('submitForm', function (event) {
+        var description = descriptionForm.querySelector('#description').value;
+        var position_x = descriptionForm.querySelector('#position_x').value;
+        var position_y = descriptionForm.querySelector('#position_y').value;
+        descriptionForm.action = '/project_LW/posts/show';
+        descriptionForm.method = 'post';
+        descriptionForm.submit();
+        // Fermer le formulaire
+        formContainer.remove();
+    });
+}
+
+    });
+</script>
+
     </body>
 </html>
