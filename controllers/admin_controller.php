@@ -9,7 +9,6 @@ require_once('models/illustration.php');
           if(!isset($_SESSION['user'])){
             header("Location: /project_LW/auth/index");
           }
-          $this->utilisateurs = new Utilisateurs();
           $this->illustration = new Illustration();
           if(isset($_POST["submitFormDelete"])){
             if (isset($_POST['illId'])) {
@@ -18,7 +17,7 @@ require_once('models/illustration.php');
               if($ill){
                 echo '<script>';
                 echo 'alert("L\'illustration a été supprimer avec succès");';
-                echo 'window.location.href = "/project_LW/admin/index";'; 
+               echo 'window.location.href = "/project_LW/admin/index";'; 
                 echo '</script>';
   
               }else{

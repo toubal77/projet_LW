@@ -60,7 +60,7 @@
                      <input type="submit" value="Show">
                 </form>
                 <form method="post" action="">
-                    <input type="hidden" name="illId" value="<?php echo $user['idIllustration']; ?>">
+                    <input type="hidden" name="illId" value="<?php echo $illustration['idIllustration']; ?>">
                     <button type="submit" name="submitFormDelete" style="padding: 5px 10px; cursor: pointer;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet illustration ?')">Delete</button>
                 </form>
             </td>
