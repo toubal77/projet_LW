@@ -74,26 +74,17 @@ class Illustration {
         }
     }
 
-    public static function find($id) {
-        $db = Db::getInstance();
-        $id = intval($id);
-        $req = $db->prepare('SELECT * FROM illustration WHERE idIllustration = :id');
-        $req->bindParam(':id', $id, PDO::PARAM_INT);
-        $req->execute();
-
-        $illustration = $req->fetch();
-
-        if ($illustration) {
-            return new Illustration(
-                $illustration['idIllustration'],
-                $illustration['titre'],
-                $illustration['format'],
-                $illustration['image'],
-                $illustration['langue_par_defaut'],
-                $illustration['idUtilisateurs']
-            );
-        } else {
-            return null;
+    public static function find($illId) {
+        try {
+            $db = Db::getInstance();
+            $req = $db->prepare('SELECT * FROM illustrations WHERE idIllustration = :illId');
+            $req->bindValue(':illId', $illId);
+            $req->execute();
+            $illustrations = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $illustrations;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
         }
     }
 

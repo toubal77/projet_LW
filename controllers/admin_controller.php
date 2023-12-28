@@ -66,7 +66,22 @@ require_once('models/illustration.php');
     
 
     public function show() {
-      require_once('views/admin/show.php');
+
+
+        if (isset($_POST['illId'])) {
+            $illId = $_POST['illId'];
+            $this->illustrations = new Illustration();
+            $illustration = $this->illustrations->find($illId);
+            if($illustration){
+              require_once('views/admin/show.php');
+            }else{
+            echo '<script>';
+            echo 'alert("Une erreur est survenue. Réessayer plus tard");';
+            echo 'window.location.href = "/project_LW/admin/index";'; 
+            echo '</script>';
+          }
+        }
+
   }
 
 

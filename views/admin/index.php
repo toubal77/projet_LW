@@ -55,9 +55,9 @@
                 <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['langueParDefaut']; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['description'] ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;">
-                <form method="post" action="/project_LW/admin/show">
-                    <input type="hidden" name="illId" value="<?php echo $user['idIllustration']; ?>">
-                    <button type="submit" name="submitFormShow" style="padding: 5px 10px; cursor: pointer;">Show</button>
+                <form action="/project_LW/admin/show" method="post">
+                     <input type="hidden" name="illId" value="<?php echo $illustration['idIllustration']; ?>">
+                     <input type="submit" value="Show">
                 </form>
                 <form method="post" action="">
                     <input type="hidden" name="illId" value="<?php echo $user['idIllustration']; ?>">
