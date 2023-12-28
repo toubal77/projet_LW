@@ -88,6 +88,22 @@ class Illustration {
         }
     }
 
+
+    public static function findIll() {
+        try {
+            $db = Db::getInstance();
+            $req = $db->prepare('SELECT * FROM illustrations WHERE idUtilisateur = :idUtilisateur AND titre= :titre');
+            $req->bindValue(':idUtilisateur', $_SESSION['id']);
+            $req->bindValue(':titre', $_SESSION['titre']);
+            $req->execute();
+            $illustrations = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $illustrations;
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
+        }
+    }
+
  public function getIdIllustration() {
     return $this->idIllustration;
 }

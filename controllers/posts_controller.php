@@ -26,13 +26,13 @@ require_once('models/illustration.php');
               echo 'window.location.href = "/project_LW/posts/create";'; 
               echo '</script>';
             } else {
-              echo "je suis ici ";
               $illustration = $this->illustration->addIllus($titre, $langueParDefaut, $description, $svgImage);
 
            if ($illustration) {
+            $_SESSION['titre'] = $titre;
             echo '<script>';
             echo 'alert("Illustration ajouter avec succès");';
-            echo 'window.location.href = "/project_LW/posts/index";'; 
+            echo 'window.location.href = "/project_LW/posts/show";'; 
             echo '</script>';
            } else {
             echo '<script>';
@@ -51,6 +51,21 @@ require_once('models/illustration.php');
         require_once('views/posts/create.php');
       }
       
+    }
+      
+
+    public function show() {
+          $this->illustrations = new Illustration();
+          $illustration = $this->illustrations->findIll();
+          if($illustration){
+            require_once('views/posts/show.php');
+          }else{
+          echo '<script>';
+          echo 'alert("Une erreur est survenue. Réessayer plus tard");';
+          echo 'window.location.href = "/project_LW/admin/index";'; 
+          echo '</script>';
+        }
+
     }
   }
 
