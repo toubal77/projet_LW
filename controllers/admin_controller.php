@@ -11,19 +11,19 @@ require_once('models/illustration.php');
           }
           $this->utilisateurs = new Utilisateurs();
           $this->illustration = new Illustration();
-          if(isset($_POST["submitForm"])){
-            if (isset($_POST['userId'])) {
-              $userId = $_POST['userId'];
-              $user = $this->utilisateurs->deleteUser($userId);
-              if($user){
+          if(isset($_POST["submitFormDelete"])){
+            if (isset($_POST['illId'])) {
+              $illId = $_POST['illId'];
+              $ill = $this->illustration->deleteIllustration($illId);
+              if($ill){
                 echo '<script>';
-                echo 'alert("L\'utilisateur a été supprimer avec succès");';
+                echo 'alert("L\'illustration a été supprimer avec succès");';
                 echo 'window.location.href = "/project_LW/admin/index";'; 
                 echo '</script>';
   
               }else{
                 echo '<script>';
-                echo 'alert("L\'utilisateur n\'a pas été supprimé, une erreur est survenue");';
+                echo 'alert("L\'illustraion n\'a pas été supprimé, une erreur est survenue");';
                 echo 'window.location.href = "/project_LW/admin/index";'; 
                 echo '</script>';
               }
@@ -41,11 +41,36 @@ require_once('models/illustration.php');
     }
 
     public function consulteUser() {
+      if(isset($_POST["submitForm"])){
+        if (isset($_POST['userId'])) {
+          $userId = $_POST['userId'];
+          $user = $this->utilisateurs->deleteUser($userId);
+          if($user){
+            echo '<script>';
+            echo 'alert("L\'utilisateur a été supprimer avec succès");';
+            echo 'window.location.href = "/project_LW/admin/index";'; 
+            echo '</script>';
+
+          }else{
+            echo '<script>';
+            echo 'alert("L\'utilisateur n\'a pas été supprimé, une erreur est survenue");';
+            echo 'window.location.href = "/project_LW/admin/index";'; 
+            echo '</script>';
+          }
+        }
+      }
       $this->utilisateurs = new Utilisateurs();
       $users = $this->utilisateurs->getAllUsers();
       require_once('views/admin/consulteUser.php');
     }
     
+
+    public function show() {
+      require_once('views/admin/show.php');
+  }
+
+
+
     public function error() {
       require_once('views/admin/error.php');
     }

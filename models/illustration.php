@@ -56,6 +56,24 @@ class Illustration {
         }
     }
 
+    public static function deleteIllustration($illId) {
+        try {
+            $db = Db::getInstance();
+            $req = $db->prepare('DELETE FROM illustrations WHERE idIllustration = :illId');
+            $req->bindValue(':illId', $illId);
+            $req->execute();
+
+           if($req){
+            return true;
+           }else{
+            return false;
+           }
+        } catch (PDOException $e) {
+            echo "Une erreur s'est produite : " . $e->getMessage();
+            return false;
+        }
+    }
+
     public static function find($id) {
         $db = Db::getInstance();
         $id = intval($id);

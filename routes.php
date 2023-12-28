@@ -24,8 +24,8 @@
 
 $controllers = array(
   'auth' => ['index', 'signUp','logout'],
-  'posts' => ['index', 'create','show'],
-  'admin' => ['index', 'show','createUser','consulteUser']
+  'posts' => ['index', 'create'],
+  'admin' => ['index', 'show','createUser','consulteUser','show']
 );
 
 $requestURI = $_SERVER['REQUEST_URI'];

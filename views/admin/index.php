@@ -54,8 +54,16 @@
                 <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['image']; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['langueParDefaut']; ?></td>
                 <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $illustration['description'] ?></td>
-                <td style="border: 1px solid #ddd; padding: 8px;"><a href="/project_LW/posts/show" style="padding: 5px 10px; cursor: pointer;">Show</a>
-                <a href="" style="padding: 5px 10px; cursor: pointer;">Delete</a></td>
+                <td style="border: 1px solid #ddd; padding: 8px;">
+                <form method="post" action="/project_LW/admin/show">
+                    <input type="hidden" name="illId" value="<?php echo $user['idIllustration']; ?>">
+                    <button type="submit" name="submitFormShow" style="padding: 5px 10px; cursor: pointer;">Show</button>
+                </form>
+                <form method="post" action="">
+                    <input type="hidden" name="illId" value="<?php echo $user['idIllustration']; ?>">
+                    <button type="submit" name="submitFormDelete" style="padding: 5px 10px; cursor: pointer;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet illustration ?')">Delete</button>
+                </form>
+            </td>
             </tr>
         <?php endforeach; ?>
     </tbody>

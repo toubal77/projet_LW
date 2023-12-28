@@ -52,10 +52,6 @@ require_once('models/illustration.php');
       }
       
     }
-
-    public function show() {
-        require_once('views/posts/show.php');
-    }
   }
 
   function fileExtension($filename) {
