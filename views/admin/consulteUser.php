@@ -1,4 +1,4 @@
-<?php require_once('config.php'); ?>
+<?php session_start(); require_once('config.php'); ?>
 <!DOCTYPE html>
 <html>
 
@@ -83,10 +83,12 @@
             <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $user['email']; ?></td>
             <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $user['role']; ?></td>
             <td style="border: 1px solid #ddd; padding: 8px;">
+            <?php if ($user['idUtilisateurs'] != $_SESSION['id']): ?>
                 <form method="post" action="">
                     <input type="hidden" name="userId" value="<?php echo $user['idUtilisateurs']; ?>">
                     <button type="submit" name="submitForm" style="padding: 5px 10px; cursor: pointer;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Delete</button>
                 </form>
+                <?php endif; ?>
             </td>
         </tr>
     <?php endforeach; ?>
