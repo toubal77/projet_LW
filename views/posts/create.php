@@ -58,20 +58,8 @@
         <option value="Anglais">Anglais</option>
         <option value="Anglais">Chinois</option>
     </select>
-    <label for="svgImage" style="display: block; margin-bottom: 5px; color: #333;">Image:</label>
-    <select name="svgImage" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required>
-        <option value="svgImage">Télécharger une nouvelle image</option>
-        <?php
-        $imageDirectory = 'assets/';
-        $images = scandir($imageDirectory);
-
-        foreach ($images as $image) {
-            if ($image != '.' && $image != '..') {
-                echo '<option value="' . $image . '">' . $image . '</option>';
-            }
-        }
-        ?>
-    </select>
+    <label for="svgImage">Sélectionnez une image :</label>
+    <input type="file" name="svgImage" accept="image/*" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required>
 
     <label for="description" style="display: block; margin-bottom: 5px; color: #333;">Description:</label>
     <textarea id="description" name="description" rows="4" cols="50" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"></textarea>

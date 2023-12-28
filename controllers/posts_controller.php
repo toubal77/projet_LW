@@ -14,38 +14,53 @@ require_once('models/composant.php');
         header("Location: /project_LW/auth/index");
       }
       if(isset($_POST["submitForm"])){
-           $this->illustration = new Illustration();
-        if (isset($_POST['titre']) && isset($_POST['langueParDefaut'])&& isset($_POST['description'])  &&isset($_POST['svgImage'])){ 
-            $titre = $_POST['titre'];
-            $description = $_POST['description'];
-            $langueParDefaut = $_POST['langueParDefaut'];
-            $svgImage = $_POST['svgImage'];
-            $checkExt = fileExtension($_POST['svgImage']);
-            if (!$checkExt) {
-              echo '<script>';
-              echo 'alert("Le format de la photo n\'est pas autorisé. Veuillez choisir une photo au format PNG, JPG, JPEG ou SVG");';
-              echo 'window.location.href = "/project_LW/posts/create";'; 
-              echo '</script>';
-            } else {
-              $illustration = $this->illustration->addIllus($titre, $langueParDefaut, $description, $svgImage);
+        
+        $this->illustration = new Illustration();
+        if (isset($_POST['titre']) && isset($_POST['langueParDefaut']) && isset($_POST['description']) && isset($_FILES['svgImage'])) {
+          $titre = $_POST['titre'];
+          $description = $_POST['description'];
+          $langueParDefaut = $_POST['langueParDefaut'];
+          $svgImage = $_FILES['svgImage'];
 
-           if ($illustration) {
-            $_SESSION['titre'] = $titre;
-            echo '<script>';
-            echo 'alert("Illustration ajouter avec succès");';
-            echo 'window.location.href = "/project_LW/posts/show";'; 
-            echo '</script>';
-           } else {
-            echo '<script>';
-            echo 'alert("Erreur lors de création d\'une illustration. Réessayer");';
+          $uploadDirectory = 'assets/';
+          $uploadedFileName = $_FILES['svgImage']['name'];
+          $targetFilePath = $uploadDirectory . $uploadedFileName;
+          if (move_uploaded_file($_FILES['svgImage']['tmp_name'], $targetFilePath)) {
+              $checkExt = fileExtension($_FILES['svgImage']['type']);
+             if (!$checkExt) {
+
+               echo '<script>';
+               echo 'alert("Le format de la photo n\'est pas autorisé. Veuillez choisir une photo au format PNG, JPG, JPEG ou SVG");';
+              echo 'window.location.href = "/project_LW/posts/create";'; 
+               echo '</script>';
+              } else {
+              $illustration = $this->illustration->addIllus($titre, $langueParDefaut, $description, $_FILES['svgImage']['name']);
+              
+            if ($illustration) {
+                $_SESSION['titre'] = $titre;
+                echo '<script>';
+                echo 'alert("Illustration ajouter avec succès");';
+               echo 'window.location.href = "/project_LW/posts/show";'; 
+                echo '</script>';
+               } else {
+                echo '<script>';
+                echo 'alert("Erreur lors de création d\'une illustration. Réessayer");';
+               echo 'window.location.href = "/project_LW/posts/create";'; 
+                echo '</script>';
+              }
+            }
+            } else {
+              echo '<script>';
+              echo 'alert("Une erreur s\'est produite lors du téléchargement du fichier.");';
             echo 'window.location.href = "/project_LW/posts/create";'; 
-            echo '</script>';
-           }
-          }
+              echo '</script>';
+        }
+      
+        
         } else {
-          echo '<script>';
+        echo '<script>';
           echo 'alert("Veuillez remplir tous les champs du formulaire");';
-          echo 'window.location.href = "/project_LW/posts/create";'; 
+        echo 'window.location.href = "/project_LW/posts/create";'; 
           echo '</script>';
         }
       }else{
@@ -86,14 +101,10 @@ require_once('models/composant.php');
     }
   }
 
-  function fileExtension($filename) {
-    $formatsAut = ['.png', '.jpg', '.jpeg', '.svg'];
-    foreach ($formatsAut as $extensionAut) {
-        $check = strpos($filename, $extensionAut);
-        if ($check !== false) {
-            return true;
-        }
-    }
-    return false;
+  function fileExtension($fileMimeType) {
+    $allowedMimeTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg+xml'];
+    
+    return in_array($fileMimeType, $allowedMimeTypes);
 }
+
 ?>
