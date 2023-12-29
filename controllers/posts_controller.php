@@ -74,10 +74,10 @@ require_once('models/composant.php');
           $this->illustrations = new Illustration();
           $this->composants = new Composant();
 
-          if (isset($_POST['position_y']) && isset($_POST['position_x']) && isset($_POST['composant'])) { 
+          if (isset($_POST['position_y']) && isset($_POST['position_x'])) { 
             $position_y = $_POST['position_y'];
             $position_x = $_POST['position_x'];
-            $composant = $_POST['composant'];
+            $composant =  isset($_POST['composant']) ? $_POST['composant']: 'Composant';
             $composants = $this->composants->add($_SESSION['idIll'],$composant,$position_y,$position_x);
             
             if ($composants) {

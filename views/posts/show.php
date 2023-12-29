@@ -96,7 +96,7 @@
 
         formHtml.innerHTML = `
             <label for="description">Description:</label>
-            <input type="text" id="description" name="composant" placeholder="Quel est le nom de ce composant ?" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
+            <input type="text" id="description" name="composant" placeholder="Quel est le nom de ce composant ?" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
             <input type="hidden" id="position_y" name="position_y" value="${y}">
             <input type="hidden" id="position_x" name="position_x" value="${x}">
             <br>
