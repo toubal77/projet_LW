@@ -71,7 +71,7 @@ require_once('models/composant.php');
       
 
     public function show() {
-          $this->illustrations = new Illustration();
+          $this->illustration = new Illustration();
           $this->composants = new Composant();
 
           if (isset($_POST['position_y']) && isset($_POST['position_x'])) { 
@@ -92,9 +92,9 @@ require_once('models/composant.php');
               echo '</script>';
             }
           } 
-          $illustration = $this->illustrations->findIll();
-         $_SESSION['idIll'] = $illustration[0]['idIllustration']; 
-         if($illustration){
+          $illustrations = $this->illustration->findIll();
+         $_SESSION['idIll'] = $illustrations[0]['idIllustration']; 
+         if($illustrations){
             require_once('views/posts/show.php');
           }
 

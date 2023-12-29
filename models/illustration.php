@@ -109,17 +109,46 @@ class Illustration {
     public static function findIll() {
         try {
             $db = Db::getInstance();
-            $req = $db->prepare('SELECT * FROM illustrations WHERE idUtilisateur = :idUtilisateur AND titre= :titre');
+            $req = $db->prepare('SELECT ill.*, comp.* FROM illustrations ill LEFT JOIN composant comp ON ill.idIllustration = comp.idIllustration WHERE ill.idUtilisateur = :idUtilisateur AND ill.titre = :titre');
             $req->bindValue(':idUtilisateur', $_SESSION['id']);
             $req->bindValue(':titre', $_SESSION['titre']);
             $req->execute();
-            $illustrations = $req->fetchAll(PDO::FETCH_ASSOC);
-            return $illustrations;
+    
+            $result = $req->fetchAll(PDO::FETCH_ASSOC);
+            $illustrations = [];
+            foreach ($result as $row) {
+                $illId = $row['idIllustration'];
+                if (!isset($illustrations[$illId])) {
+                    $illustrations[$illId] = [
+                        'idIllustration' => $row['idIllustration'],
+                        'titre' => $row['titre'],
+                        'langueParDefaut' => $row['langueParDefaut'],
+                        'image' => $row['image'],
+                        'description' => $row['description'],
+                        'idUtilisateur' => $row['idUtilisateur'],
+                        'composants' => []
+                    ];
+                }
+    
+                if ($row['idComposant']) {
+                    $illustrations[$illId]['composants'][] = [
+                        'idComposant' => $row['idComposant'],
+                        'idIllustration' => $row['idIllustration'],
+                        'composant' => $row['composant'],
+                        'vecteur_x' => $row['vecteur_x'],
+                        'vecteur_y' => $row['vecteur_y']
+                    ];
+                }
+            }
+    
+            return array_values($illustrations);
         } catch (PDOException $e) {
             echo "Une erreur s'est produite : " . $e->getMessage();
             return false;
         }
     }
+    
+    
 
 }
 ?>
