@@ -73,7 +73,7 @@
                         $description = $composant['composant'];
                         $arrow = '↑';
                         echo "<div style='position: absolute; left: $left; top: $top; font-size: 18px; color: red;'>$arrow</div>";
-                        echo "<div style='position: absolute; left: $left; top: " . ($composant['vecteur_y'] + 20) . "px; font-size: 14px; color: blue;'>$description</div>";
+                        echo "<div style='position: absolute; left: $left; top: " . ($top + 20) . "px; font-size: 14px; color: blue;'>$description</div>";
                     ?>
                      <?php endforeach; ?>
                     <?php endif; ?>

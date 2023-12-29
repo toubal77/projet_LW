@@ -67,9 +67,10 @@ require_once('models/illustration.php');
 
         if (isset($_POST['illId'])) {
             $illId = $_POST['illId'];
-            $this->illustrations = new Illustration();
-            $illustration = $this->illustrations->find($illId);
-            if($illustration){
+            $this->illustration = new Illustration();
+            $illustrations = $this->illustration->find($illId);
+            if($illustrations){
+              echo print_r($illustrations,true);
               require_once('views/admin/show.php');
             }else{
             echo '<script>';

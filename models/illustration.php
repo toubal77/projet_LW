@@ -90,6 +90,14 @@ class Illustration {
             $req->bindValue(':illId', $illId);
             $req->execute();
             $illustrations = $req->fetchAll(PDO::FETCH_ASSOC);
+
+            // Récupérer les composants liés à l'illustration
+            $reqComp = $db->prepare('SELECT * FROM composant WHERE idIllustration = :illId');
+            $reqComp->bindValue(':illId', $illId);
+            $reqComp->execute();
+            $composants = $reqComp->fetchAll(PDO::FETCH_ASSOC);
+
+            $illustrations['composants'] = $composants;
             return $illustrations;
         } catch (PDOException $e) {
             echo "Une erreur s'est produite : " . $e->getMessage();
