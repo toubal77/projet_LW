@@ -37,9 +37,23 @@ class Illustration {
     public static function getAllIllustrations() {
         try {
             $db = Db::getInstance();
+
             $req = $db->prepare('SELECT * FROM illustrations');
             $req->execute();
             $illustrations = $req->fetchAll(PDO::FETCH_ASSOC);
+            
+            $reqComp = $db->prepare('SELECT * FROM composant');
+            $reqComp->execute();
+            $composants = $reqComp->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($illustrations as &$ill) {
+                $ill['composants'] = [];
+                foreach ($composants as $comp) {
+                    if ($comp['idIllustration'] == $ill['idIllustration']) {
+                        $ill['composants'][] = $comp;
+                    }
+                }
+            }
             return $illustrations;
         } catch (PDOException $e) {
             echo "Une erreur s'est produite : " . $e->getMessage();

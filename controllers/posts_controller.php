@@ -6,7 +6,7 @@ require_once('models/composant.php');
     public function index() {
       $this->illustration = new Illustration();
       $illustrations = $this->illustration->getAllIllustrations();
-      require_once('views/posts/index.php');
+       require_once('views/posts/index.php');
     }
  
     public function create() {

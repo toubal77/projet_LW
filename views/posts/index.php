@@ -59,19 +59,32 @@
 
     <div style="display: flex; flex-direction: column; align-items: center; margin: 20px;">
     <?php if (empty($illustrations)) : ?>
-    <div style="text-align: center; font-weight: bold; margin-top: 10px;">Aucune illustration disponible</div>
-<?php else : ?>
-    <?php foreach ($illustrations as $illustration) : ?>
-        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-            <img src="assets/<?php echo $illustration['image']; ?>" alt="assets/<?php echo $illustration['image']; ?>" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-            <h2 style="color: #333; margin-bottom: 10px;">Titre - <?php echo $illustration['titre']; ?></h2>
-            <p style="color: #666; line-height: 1.6;">Description - <?php echo $illustration['description']; ?></p>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
+        <div style="text-align: center; font-weight: bold; margin-top: 10px;">Aucune illustration disponible</div>
+    <?php else : ?>
+        <?php foreach ($illustrations as $illustration) : ?>
+            <div style="position: relative; border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <img src="assets/<?php echo $illustration['image']; ?>" alt="assets/<?php echo $illustration['image']; ?>" style="max-width: 100%; height: auto; margin-bottom: 10px;">
 
+                <?php if (isset($illustration['composants']) && !empty($illustration['composants'])) : ?>
+                    <?php foreach ($illustration['composants'] as $composant) : ?>
+                    <?php
+                        $left = $composant['vecteur_x'] . 'px'; 
+                        $top = $composant['vecteur_y'] . 'px';
+                        $description = $composant['composant'];
+                        $arrow = '↑';
+                        echo "<div style='position: absolute; left: $left; top: $top; font-size: 18px; color: red;'>$arrow</div>";
+                        echo "<div style='position: absolute; left: $left; top: " . ($composant['vecteur_y'] + 20) . "px; font-size: 14px; color: blue;'>$description</div>";
+                    ?>
+                     <?php endforeach; ?>
+                    <?php endif; ?>
 
-    </div>
+                <h2 style="color: #333; margin-bottom: 10px;">Titre - <?php echo $illustration['titre']; ?></h2>
+                <p style="color: #666; line-height: 1.6;">Description - <?php echo $illustration['description']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
 
 
     <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; margin-top: 20px;">
