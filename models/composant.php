@@ -14,7 +14,7 @@ class Composant {
     try {
         $db = Db::getInstance();
         
-        $req = $db->prepare('INSERT INTO composant (idIllustration, description, vecteur_x, vecteur_y) VALUES (:idIll, :description, :vecteur_y, :vecteur_x)');
+        $req = $db->prepare('INSERT INTO composant (idIllustration, composant, vecteur_x, vecteur_y) VALUES (:idIll, :description, :vecteur_y, :vecteur_x)');
         
         $req->bindValue(':idIll', $idILl);
         $req->bindValue(':description', $description);

@@ -77,9 +77,9 @@ require_once('models/composant.php');
           if (isset($_POST['position_y']) && isset($_POST['position_x'])) { 
             $position_y = $_POST['position_y'];
             $position_x = $_POST['position_x'];
-            $composant =  isset($_POST['composant']) ? $_POST['composant']: 'Composant';
+            $composant = trim($_POST['composant']) == '' ? 'Composant' : $_POST['composant'];
             $composants = $this->composants->add($_SESSION['idIll'],$composant,$position_y,$position_x);
-            
+
             if ($composants) {
               echo '<script>';
               echo 'alert("Composants ajouter avec succès");';
@@ -88,7 +88,7 @@ require_once('models/composant.php');
             } else {
               echo '<script>';
               echo 'alert("Erreur lors de création d\'une Composants. Réessayer");';
-             echo 'window.location.href = "/project_LW/posts/create";'; 
+             echo 'window.location.href = "/project_LW/posts/show";'; 
               echo '</script>';
             }
           } 
