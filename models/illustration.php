@@ -54,6 +54,10 @@ class Illustration {
             $req->bindValue(':illId', $illId);
             $req->execute();
 
+            $reqComp = $db->prepare('DELETE FROM composant WHERE idIllustration = :illId');
+            $reqComp->bindValue(':illId', $illId);
+            $reqComp->execute();
+
            if($req){
             return true;
            }else{
