@@ -70,7 +70,6 @@ require_once('models/illustration.php');
             $this->illustration = new Illustration();
             $illustrations = $this->illustration->find($illId);
             if($illustrations){
-              echo print_r($illustrations,true);
               require_once('views/admin/show.php');
             }else{
             echo '<script>';
