@@ -1,7 +1,7 @@
 #!/bin/bash
 
-read -p "Entrez le nom du serveur de la base de données (localhost !): " DB_HOST
-read -e -p $'\nEntrez le nom d\'utilisateur MySQL (root !): ' DB_USER
+read -p "Entrez le nom du serveur de la base de données (généralement localhost !): " DB_HOST
+read -e -p $'\nEntrez le nom d\'utilisateur MySQL (généralement root !): ' DB_USER
 read -e -p $'\nEntrez le mot de passe MYSQL : ' DB_PASSWORD
 read -e -p $'\nEntrez le nom de la base de données : ' DB_NAME
 
