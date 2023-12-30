@@ -6,7 +6,7 @@ Pour le déploiement, veuillez suivre ces informations :
     - Tapez dans le terminal la commande suivante : `sudo ./config.sh`
         - Si le fichier ne veut pas s'exécuter, tapez dans le terminal : `sudo chmod u+x config.sh`
         - Si le problème persiste, tapez dans le terminal les deux commandes suivantes : `sudo chown root:root config.sh; sudo chmod u+x config.sh`
-        - À la fin, exécutez le script avec `sudo ./config.sh`
+        - A la fin, exécutez le script avec `sudo ./config.sh`
 
 3. Vous pouvez maintenant utiliser le site.
 4. Lors de la manipulation du site et si vous rencontrez un problème en changeant les pages, veuillez suivre ces instructions :
