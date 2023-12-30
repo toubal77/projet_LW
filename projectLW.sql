@@ -11,23 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `projectLW`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `composant`
---
-
-CREATE TABLE `composant` (
+CREATE TABLE IF NOT EXISTS `composant` (
   `idComposant` int(11) NOT NULL,
   `idIllustration` int(11) NOT NULL,
   `composant` varchar(255) NOT NULL DEFAULT 'Composant',
@@ -37,11 +21,8 @@ CREATE TABLE `composant` (
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `illustrations`
---
 
-CREATE TABLE `illustrations` (
+CREATE TABLE IF NOT EXISTS `illustrations` (
   `idIllustration` int(11) NOT NULL,
   `titre` varchar(255) NOT NULL,
   `langueParDefaut` varchar(255) NOT NULL,
@@ -52,11 +33,8 @@ CREATE TABLE `illustrations` (
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `users`
---
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `idUtilisateurs` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `role` enum('admin','user') NOT NULL DEFAULT 'user',
@@ -64,58 +42,27 @@ CREATE TABLE `users` (
   `mot_de_passe` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Déchargement des données de la table `users`
---
 
 INSERT INTO `users` (`idUtilisateurs`, `nom`, `role`, `email`, `mot_de_passe`) VALUES
 (11, 'admin', 'admin', 'admin@gmail.com', 'admin');
 
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `composant`
---
 ALTER TABLE `composant`
   ADD PRIMARY KEY (`idComposant`);
 
---
--- Index pour la table `illustrations`
---
+
 ALTER TABLE `illustrations`
   ADD PRIMARY KEY (`idIllustration`);
 
---
--- Index pour la table `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`idUtilisateurs`);
 
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `composant`
---
 ALTER TABLE `composant`
   MODIFY `idComposant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
---
--- AUTO_INCREMENT pour la table `illustrations`
---
+
 ALTER TABLE `illustrations`
   MODIFY `idIllustration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
---
--- AUTO_INCREMENT pour la table `users`
---
 ALTER TABLE `users`
   MODIFY `idUtilisateurs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
