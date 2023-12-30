@@ -23,6 +23,9 @@ require_once('models/composant.php');
           $svgImage = $_FILES['svgImage'];
 
           $uploadDirectory = 'assets/';
+          if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0755, true);
+          }
           $uploadedFileName = $_FILES['svgImage']['name'];
           $targetFilePath = $uploadDirectory . $uploadedFileName;
           if (move_uploaded_file($_FILES['svgImage']['tmp_name'], $targetFilePath)) {
