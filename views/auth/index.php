@@ -53,7 +53,7 @@
 <h2 style="margin-bottom: 20px; color: #333; font-size: 24px;">Connexion</h2>
 
 <form action="" method="post" enctype="multipart/form-data">
-    <input type="text" name="email" placeholder="Nom d'utilisateur" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
+    <input type="text" name="email" placeholder="exemple@gmail.com" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
     <input type="password" name="password" placeholder="Mot de passe" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" required>
     <input type="submit" name="submitForm" value="login"  style="background-color: #007BFF; color: #fff; padding: 10px; border: none; width: 100%; cursor: pointer; border-radius: 4px; font-size: 16px;" >
     <p style="margin-top: 10px;">Pas encore de compte? <a href="/project_LW/auth/signUp">Inscrivez-vous</a></p>
