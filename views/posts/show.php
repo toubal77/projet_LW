@@ -55,6 +55,7 @@
 
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 20px;">
+<div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">Si vous voulez pas ajouter ou terminer d'ajouter des composants à l'illustration veuillez cliquer <a href="<?php echo defined('website') ? '/' . website . '/posts/index' : '/posts/index'; ?>">ici</a></div>
 <?php foreach ($illustrations as $illustration) : ?>
     <?php if (isset($illustration['idIllustration'])) : ?>
     <div style="position: relative; border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; max-width: 600px; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
