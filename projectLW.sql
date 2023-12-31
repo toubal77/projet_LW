@@ -48,9 +48,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO `users` (`idUtilisateurs`, `nom`, `role`, `email`, `mot_de_passe`) VALUES
-(11, 'admin', 'admin', 'admin@gmail.com', 'admin');
-
 ALTER TABLE `composant`
   ADD PRIMARY KEY (`idComposant`);
 
@@ -62,12 +59,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`idUtilisateurs`);
 
 ALTER TABLE `composant`
-  MODIFY `idComposant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idComposant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 
 ALTER TABLE `illustrations`
-  MODIFY `idIllustration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idIllustration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 ALTER TABLE `users`
-  MODIFY `idUtilisateurs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idUtilisateurs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
