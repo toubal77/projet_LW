@@ -11,9 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-DROP TABLE `composant`;
-DROP TABLE `illustrations`;
-DROP TABLE `users`;
+DROP TABLE IF EXISTS `composant`;
+DROP TABLE IF EXISTS `illustrations`;
+DROP TABLE IF EXISTS `users`;
+
 
 CREATE TABLE `composant` (
   `idComposant` int(11) NOT NULL,
